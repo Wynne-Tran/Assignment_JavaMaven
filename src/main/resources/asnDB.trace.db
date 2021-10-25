@@ -1,0 +1,90 @@
+2021-10-25 00:42:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE RECIPES (ID BIGINT NOT NULL, DATE VARCHAR(255), DESCRIPTION VARCHAR(10000), IMAGE VARCHAR(255), LIKE[*] BOOLEAN, TITLE VARCHAR(255), USER_EMAIL VARCHAR(255), PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table recipes (id bigint not null, date varchar(255), description varchar(10000), image varchar(255), like boolean, title varchar(255), user_email varchar(255), primary key (id)) [42001-200]
+2021-10-25 00:42:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table favorite add constraint FKj0ejkuba3hiaflqpgiy99dtls foreign key (recipe_id) references recipes [42102-200]
+2021-10-25 00:42:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table recipes add constraint FKp18unwvfcx974xshxyqpu6dx6 foreign key (user_email) references users [42102-200]
+2021-10-25 00:43:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT RECIPES0_.USER_EMAIL AS USER_EMA7_1_0_, RECIPES0_.ID AS ID1_1_0_, RECIPES0_.ID AS ID1_1_1_, RECIPES0_.DATE AS DATE2_1_1_, RECIPES0_.DESCRIPTION AS DESCRIPT3_1_1_, RECIPES0_.IMAGE AS IMAGE4_1_1_, RECIPES0_.LIKE[*] AS LIKE5_1_1_, RECIPES0_.TITLE AS TITLE6_1_1_, RECIPES0_.USER_EMAIL AS USER_EMA7_1_1_ FROM RECIPES RECIPES0_ WHERE RECIPES0_.USER_EMAIL=?"; expected "identifier"; SQL statement:
+select recipes0_.user_email as user_ema7_1_0_, recipes0_.id as id1_1_0_, recipes0_.id as id1_1_1_, recipes0_.date as date2_1_1_, recipes0_.description as descript3_1_1_, recipes0_.image as image4_1_1_, recipes0_.like as like5_1_1_, recipes0_.title as title6_1_1_, recipes0_.user_email as user_ema7_1_1_ from recipes recipes0_ where recipes0_.user_email=? [42001-200]
+2021-10-25 00:47:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE RECIPES (ID BIGINT NOT NULL, DATE VARCHAR(255), DESCRIPTION VARCHAR(10000), IMAGE VARCHAR(255), LIKE[*] BOOLEAN NOT NULL, TITLE VARCHAR(255), USER_EMAIL VARCHAR(255), PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table recipes (id bigint not null, date varchar(255), description varchar(10000), image varchar(255), like boolean not null, title varchar(255), user_email varchar(255), primary key (id)) [42001-200]
+2021-10-25 00:47:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table favorite add constraint FKj0ejkuba3hiaflqpgiy99dtls foreign key (recipe_id) references recipes [42102-200]
+2021-10-25 00:47:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table recipes add constraint FKp18unwvfcx974xshxyqpu6dx6 foreign key (user_email) references users [42102-200]
+2021-10-25 00:48:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT RECIPES0_.USER_EMAIL AS USER_EMA7_1_0_, RECIPES0_.ID AS ID1_1_0_, RECIPES0_.ID AS ID1_1_1_, RECIPES0_.DATE AS DATE2_1_1_, RECIPES0_.DESCRIPTION AS DESCRIPT3_1_1_, RECIPES0_.IMAGE AS IMAGE4_1_1_, RECIPES0_.LIKE[*] AS LIKE5_1_1_, RECIPES0_.TITLE AS TITLE6_1_1_, RECIPES0_.USER_EMAIL AS USER_EMA7_1_1_ FROM RECIPES RECIPES0_ WHERE RECIPES0_.USER_EMAIL=?"; expected "identifier"; SQL statement:
+select recipes0_.user_email as user_ema7_1_0_, recipes0_.id as id1_1_0_, recipes0_.id as id1_1_1_, recipes0_.date as date2_1_1_, recipes0_.description as descript3_1_1_, recipes0_.image as image4_1_1_, recipes0_.like as like5_1_1_, recipes0_.title as title6_1_1_, recipes0_.user_email as user_ema7_1_1_ from recipes recipes0_ where recipes0_.user_email=? [42001-200]
+2021-10-25 00:51:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE RECIPES (ID BIGINT NOT NULL, DATE VARCHAR(255), DESCRIPTION VARCHAR(10000), IMAGE VARCHAR(255), LIKE[*] BOOLEAN NOT NULL, TITLE VARCHAR(255), USER_EMAIL VARCHAR(255), PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table recipes (id bigint not null, date varchar(255), description varchar(10000), image varchar(255), like boolean not null, title varchar(255), user_email varchar(255), primary key (id)) [42001-200]
+2021-10-25 00:51:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table favorite add constraint FKj0ejkuba3hiaflqpgiy99dtls foreign key (recipe_id) references recipes [42102-200]
+2021-10-25 00:51:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table recipes add constraint FKp18unwvfcx974xshxyqpu6dx6 foreign key (user_email) references users [42102-200]
+2021-10-25 00:53:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE RECIPES (ID BIGINT NOT NULL, DATE VARCHAR(255), DESCRIPTION VARCHAR(10000), IMAGE VARCHAR(255), LIKE[*] TINYINT(1) DEFAULT 0, TITLE VARCHAR(255), USER_EMAIL VARCHAR(255), PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table recipes (id bigint not null, date varchar(255), description varchar(10000), image varchar(255), like tinyint(1) default 0, title varchar(255), user_email varchar(255), primary key (id)) [42001-200]
+2021-10-25 00:53:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table favorite add constraint FKj0ejkuba3hiaflqpgiy99dtls foreign key (recipe_id) references recipes [42102-200]
+2021-10-25 00:53:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table recipes add constraint FKp18unwvfcx974xshxyqpu6dx6 foreign key (user_email) references users [42102-200]
+2021-10-25 01:05:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE RECIPES (ID BIGINT NOT NULL, DATE VARCHAR(255), DESCRIPTION VARCHAR(10000), IMAGE VARCHAR(255), LIKE[*] BOOLEAN DEFAULT FALSE, TITLE VARCHAR(255), USER_EMAIL VARCHAR(255), PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table recipes (id bigint not null, date varchar(255), description varchar(10000), image varchar(255), like boolean default false, title varchar(255), user_email varchar(255), primary key (id)) [42001-200]
+2021-10-25 01:05:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table favorite add constraint FKj0ejkuba3hiaflqpgiy99dtls foreign key (recipe_id) references recipes [42102-200]
+2021-10-25 01:05:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table recipes add constraint FKp18unwvfcx974xshxyqpu6dx6 foreign key (user_email) references users [42102-200]
+2021-10-25 01:10:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE RECIPES (ID BIGINT NOT NULL, DATE VARCHAR(255), DESCRIPTION VARCHAR(10000), IMAGE VARCHAR(255), LIKE[*] INTEGER NOT NULL, TITLE VARCHAR(255), USER_EMAIL VARCHAR(255), PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table recipes (id bigint not null, date varchar(255), description varchar(10000), image varchar(255), like integer not null, title varchar(255), user_email varchar(255), primary key (id)) [42001-200]
+2021-10-25 01:10:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table favorite add constraint FKj0ejkuba3hiaflqpgiy99dtls foreign key (recipe_id) references recipes [42102-200]
+2021-10-25 01:10:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table recipes add constraint FKp18unwvfcx974xshxyqpu6dx6 foreign key (user_email) references users [42102-200]
+2021-10-25 01:13:49 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE RECIPES (ID BIGINT NOT NULL, DATE VARCHAR(255), DESCRIPTION VARCHAR(10000), IMAGE VARCHAR(255), LIKE[*] INTEGER NOT NULL, TITLE VARCHAR(255), USER_EMAIL VARCHAR(255), PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table recipes (id bigint not null, date varchar(255), description varchar(10000), image varchar(255), like integer not null, title varchar(255), user_email varchar(255), primary key (id)) [42001-200]
+2021-10-25 01:15:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE RECIPES (ID BIGINT NOT NULL, DATE VARCHAR(255), DESCRIPTION VARCHAR(10000), IMAGE VARCHAR(255), LIKE[*] INTEGER NOT NULL, TITLE VARCHAR(255), USER_EMAIL VARCHAR(255), PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table recipes (id bigint not null, date varchar(255), description varchar(10000), image varchar(255), like integer not null, title varchar(255), user_email varchar(255), primary key (id)) [42001-200]
+2021-10-25 01:15:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table favorite add constraint FKj0ejkuba3hiaflqpgiy99dtls foreign key (recipe_id) references recipes [42102-200]
+2021-10-25 01:15:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table recipes add constraint FKp18unwvfcx974xshxyqpu6dx6 foreign key (user_email) references users [42102-200]
+2021-10-25 01:16:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE RECIPES (ID BIGINT NOT NULL, DATE VARCHAR(255), DESCRIPTION VARCHAR(10000), IMAGE VARCHAR(255), LIKE[*] VARCHAR(255), TITLE VARCHAR(255), USER_EMAIL VARCHAR(255), PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table recipes (id bigint not null, date varchar(255), description varchar(10000), image varchar(255), like varchar(255), title varchar(255), user_email varchar(255), primary key (id)) [42001-200]
+2021-10-25 01:16:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table favorite add constraint FKj0ejkuba3hiaflqpgiy99dtls foreign key (recipe_id) references recipes [42102-200]
+2021-10-25 01:16:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table recipes add constraint FKp18unwvfcx974xshxyqpu6dx6 foreign key (user_email) references users [42102-200]
+2021-10-25 01:17:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE RECIPES (ID BIGINT NOT NULL, DATE VARCHAR(255), DESCRIPTION VARCHAR(10000), IMAGE VARCHAR(255), LIKE[*] VARCHAR(255), TITLE VARCHAR(255), USER_EMAIL VARCHAR(255), PRIMARY KEY (ID))"; expected "identifier"; SQL statement:
+create table recipes (id bigint not null, date varchar(255), description varchar(10000), image varchar(255), like varchar(255), title varchar(255), user_email varchar(255), primary key (id)) [42001-200]
+2021-10-25 01:17:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table favorite add constraint FKj0ejkuba3hiaflqpgiy99dtls foreign key (recipe_id) references recipes [42102-200]
+2021-10-25 01:17:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RECIPES" not found; SQL statement:
+alter table recipes add constraint FKp18unwvfcx974xshxyqpu6dx6 foreign key (user_email) references users [42102-200]
