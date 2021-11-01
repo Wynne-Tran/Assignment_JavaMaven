@@ -39,7 +39,7 @@
                     <a class="nav-link" href="/profile">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/planrecipe" >Plan Recipe</a>
+                    <a class="nav-link" href="planrecipe" >Plan Recipe</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/search">Search</a>
@@ -103,8 +103,8 @@
             <div class="right col-lg-8" >
                 <div class="row row-cols-md-1">
                     <!-- Grid column -->
-                    <div class="col-md-5 " th:each="recipe:${session.userRecipe}">
-                        <div class="card h-100">
+                    <div class="col-md-4 " th:each="recipe:${session.userRecipe}">
+                        <div class="card h-80">
                             <img style="height: 200px" class="card-img-top" th:src="@{${'image/' + recipe.image }}" th:alt= "*{recipe.image}"  />
                             <div class="card-body">
                                 <strong class="card-title" th:text="${recipe.title}"></strong>
@@ -130,8 +130,8 @@
                 </div>
 
                     <!-- Grid column -->
-                    <div class="col-md-5 " th:each="fav:${favorites}">
-                        <div class="card h-60">
+                    <div class="col-md-4 " th:each="fav:${favorites}">
+                        <div class="card h-80">
                             <img style="height: 200px" class="card-img-top" th:src="@{${'image/' + fav.getRecipes().image }}" th:alt= "*{fav.getRecipes().image}"  />
                             <div class="card-body">
                                 <strong class="card-title" th:text="${fav.getRecipes().title}"></strong>

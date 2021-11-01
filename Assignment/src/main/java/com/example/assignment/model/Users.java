@@ -1,8 +1,8 @@
 package com.example.assignment.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.lang.Nullable;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -30,7 +30,6 @@ public class Users implements Serializable {
     @Nullable
     private MultipartFile multipartFile;
 
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Recipes> recipes;
 
@@ -44,6 +43,10 @@ public class Users implements Serializable {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Favorite> favorites;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Plan_Recipe> plan_recipes;
 
     public Users(){};
 
@@ -125,5 +128,21 @@ public class Users implements Serializable {
 
     public void setRoles(List<Roles> roles) {
         this.roles = roles;
+    }
+
+    public List<Favorite> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<Favorite> favorites) {
+        this.favorites = favorites;
+    }
+
+    public List<Plan_Recipe> getPlan_recipes() {
+        return plan_recipes;
+    }
+
+    public void setPlan_recipes(List<Plan_Recipe> plan_recipes) {
+        this.plan_recipes = plan_recipes;
     }
 }
