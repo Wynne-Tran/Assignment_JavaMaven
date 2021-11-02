@@ -39,17 +39,17 @@
                 <!--Grid column-->
                 <div class="col-md-6 mb-4 white-text text-center text-md-left">
 
-                    <h1 class="display-4 font-weight-bold">Learn Bootstrap 4 with MDB</h1>
+                    <h1 class="display-4 font-weight-bold">Share your recipe !</h1>
 
                     <hr class="hr-light">
 
                     <p>
-                        <strong>Best & free guide of responsive web design</strong>
+                        <strong>Best & free guide for your meal</strong>
                     </p>
 
                     <p class="mb-4 d-none d-md-block">
-                        <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and written versions
-                            available. Create your own, stunning website.</strong>
+                        <strong>The most famous recipes on the world. Loved by over 500 000 users. Video and written versions
+                            available. Create your own, share your favorite !!!.</strong>
                     </p>
 
                     <a th:href="@{/}" class="btn btn-outline-light">Log In
@@ -112,7 +112,7 @@
 
                                 <div class="md-form">
                                     <i class="fas fa-image prefix grey-text"></i>
-                                    <input type="file" name="image" th:field="*{multipartFile}">
+                                    <input type="file" name="image" th:field="*{multipartFile}" accept="image/png, image/jpeg, image/jpg" >
                                 </div>
                                 <div class="text-center">
                                     <button class="btn btn-outline-dark">Register</button>

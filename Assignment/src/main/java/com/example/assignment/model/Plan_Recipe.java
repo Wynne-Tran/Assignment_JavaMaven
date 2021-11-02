@@ -10,7 +10,7 @@ public class Plan_Recipe {
     @GeneratedValue
     private Long id;
     @Column(length=1000)
-    private String description;
+    private String text;
     @ManyToOne
     @JoinColumn(name="USER_EMAIL")
     @JsonBackReference
@@ -49,12 +49,15 @@ public class Plan_Recipe {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getDescription() {
-        return description;
+
+    public String getText() {
+        return text;
     }
-    public void setDescription(String description) {
-        this.description = description;
+
+    public void setText(String text) {
+        this.text = text;
     }
+
     public Users getUser() {
         return user;
     }

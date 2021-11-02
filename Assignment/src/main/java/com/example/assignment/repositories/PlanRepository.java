@@ -10,6 +10,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface PlanRepository extends CrudRepository<Plan_Recipe, Long> {
-    @Query("from Plan_Recipe e where not(e.end < :from or e.start > :to)")
-    List<Plan_Recipe> findBetween(@Param("from") @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME) LocalDateTime start, @Param("to") @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME) LocalDateTime end);
+    @Query("from Plan_Recipe e where e.user.email = :email and not(e.end < :from or e.start > :to)")
+    public List<Plan_Recipe> findBetween(
+            @Param("email") String email,
+            @Param("from") @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+            @Param("to") @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME) LocalDateTime end);
 }

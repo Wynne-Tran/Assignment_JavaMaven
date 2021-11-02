@@ -17,8 +17,8 @@
   <link href="css/style.min.css" rel="stylesheet">
   <link href="/static/css/origin.css" rel="stylesheet">
   <title>Plan Recipe </title>
-  <link href="/css/main.css" rel="stylesheet" type="text/css">
-  <link href="/icons/style.css" rel="stylesheet" type="text/css">
+  <link href="css/main.css" rel="stylesheet" type="text/css">
+  <link href="icons/style.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
@@ -27,7 +27,7 @@
   <div class="container">
 
     <a class="navbar-brand" href="/profile">
-      <img th:src="@{image/logo.png}" width="35px" alt="logo" />
+      <img th:src="@{image/logo.png}" width="30px" alt="logo" />
     </a>
 
     <!-- Collapse -->
@@ -103,11 +103,9 @@
   </div>
 </div>
 <!-- DayPilot library -->
-<script th:src = "@{js/daypilot/daypilot-all.min.js}"></script>
+<script src = "js/daypilot/daypilot-all.min.js"></script>
 
 <script th:inline="javascript">
-
-
   var nav = new DayPilot.Navigator("nav");
   nav.showMonths = 3;
   nav.skipMonths = 3;
@@ -118,17 +116,22 @@
     dp.events.load("/planrecipe/api/events");
   };
   nav.init();
-
   var dp = new DayPilot.Month("dp");
   dp.eventEndSpec = "Date";
   dp.onTimeRangeSelected = function (args) {
+    /*<![CDATA[*/
+    var titleRecipe = [[${recipes}]];
+    /*]]>*/
+    var titles = []
+    for(let title in titleRecipe){
+      titles.push({name: titleRecipe[title], id: titleRecipe[title]})
+    }
 
-    var nameStrings = [];
     const form = [
-      {name: "New Todo list", id: "nameString", options:  nameStrings},
+      {name: "Please choice your recipe", id: "titleRecipe", options:  titles},
     ];
     const data = {
-      nameString: ""
+      titleRecipe: titleRecipe[0]
     }
 
     DayPilot.Modal.form(form, data).then(function (modal) {
@@ -139,11 +142,11 @@
       var params = {
         start: args.start.toString(),
         end: args.end.toString(),
-        text: modal.result.nameString,
+        text: modal.result.titleRecipe,
         resource: args.resource
       };
       DayPilot.Http.ajax({
-        url: 'planrecipe/api/events/create',
+        url: '/planrecipe/api/events/create',
         data: params,
         success: function (ajax) {
           var data = ajax.data;
