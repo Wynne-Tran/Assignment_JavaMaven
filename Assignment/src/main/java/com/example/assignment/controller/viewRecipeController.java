@@ -1,3 +1,14 @@
+
+/* ********************************************************************************
+ * Project: Create a Recipe Project Using Spring/Spring Boot
+ * Assignment: 1
+ * Author(s): Wynne Tran
+ * Student Number: 101161665
+ * Date: Nov 4 2021
+ * Description:  this page is a controller that displays all recipes, we can delete recipes of current user,
+ and current user can like recipes from other users, then view favorite recipes on current user's profile page.
+ ******************************************************************************** */
+
 package com.example.assignment.controller;
 
 import com.example.assignment.model.Favorite;
@@ -38,9 +49,15 @@ public class viewRecipeController {
     public  String addToFavorite(Model model, HttpSession session, @RequestParam("id") Long id){
         String email = (String)session.getAttribute("email");
         Favorite newFavorite = new Favorite(email, id, recipeService.findOne(id));
-        recipeService.findOne(id).setFavorite_like("1");
+        recipeService.findOne(id).setFavorite_like("2");
         favoriteService.addToFavorite(newFavorite);
         model.addAttribute("recipes", recipeService.findAll());
-        return "viewrecipe";
+        return "redirect:/viewrecipe";
+    }
+
+    @PostMapping("/deleteRecipe")
+    public  String deleteRecipe(@RequestParam("id") Long id){
+        recipeService.deleteRecipe(id);
+        return "redirect:/viewrecipe";
     }
 }

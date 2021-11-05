@@ -1,3 +1,13 @@
+
+/* ********************************************************************************
+ * Project: Create a Recipe Project Using Spring/Spring Boot
+ * Assignment: 1
+ * Author(s): Wynne Tran
+ * Student Number: 101161665
+ * Date: Nov 4 2021
+ * Description:  this page is a database of Plan_recipe
+ ******************************************************************************** */
+
 package com.example.assignment.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;

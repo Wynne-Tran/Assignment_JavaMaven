@@ -99,7 +99,7 @@
                     <i class="fa fa-tumblr-square" aria-hidden="true"></i>
                 </div>
             </div>
-            <!---- Form user-------------------->
+            <!--------------- Form user-------------------->
             <div class="right col-lg-8" >
                 <div class="row row-cols-md-1">
                     <!-- Grid column -->
@@ -114,12 +114,10 @@
                                     <nav class="navbar navbar-light bg-light">
                                         <ul class="navbar-nav mr-auto" > <li th:text="${recipe.date}"></li> </ul>
                                         <ul class="navbar-nav ml-auto">
-                                            <li > <a style="color: #2748ea;" href="#!" role="button"
-                                            ><i class="fas fa-pencil-alt fa-lg "></i
-                                            ></a>
-                                                <a style="color: #ed0c44;" href="#!" role="button"
-                                                ><i class="fas fa-trash-alt fa-lg "></i
-                                                ></a></li>
+                                            <form action="/profile" method="post">
+                                                <input type="hidden" th:name="id" th:value="${recipe.id}">
+                                                <button clas="btn btn-outline-danger" style="color: #ed0c44;"><i class="fas fa-trash-alt fa-lg"> </i> </button>
+                                            </form>
                                         </ul>
                                     </nav>
                                 </div>
@@ -141,12 +139,10 @@
                                     <nav class="navbar navbar-light bg-light">
                                         <ul class="navbar-nav mr-auto" > <li th:text="${fav.getRecipes().date}"></li> </ul>
                                         <ul class="navbar-nav ml-auto">
-                                            <li > <a style="color: #2748ea;" href="#!" role="button"
-                                            ><i class="fas fa-heart fa-lg  "></i
-                                            ></a>
-                                                <a style="color: #ed0c44;" href="#!" role="button"
-                                                ><i class="fas fa-trash-alt fa-lg "></i
-                                                ></a></li>
+                                            <form action="/deletefavorite" method="post">
+                                                <input type="hidden" th:name="id" th:value="${fav.id}">
+                                                <button clas="btn btn-outline-danger" style="color: #ed0c44;"><i class="fas fa-trash-alt fa-lg"> </i> </button>
+                                            </form>
                                         </ul>
                                     </nav>
                                 </div>

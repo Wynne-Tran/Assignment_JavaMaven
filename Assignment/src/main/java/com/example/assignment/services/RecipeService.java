@@ -1,3 +1,12 @@
+
+/* ********************************************************************************
+ * Project: Create a Recipe Project Using Spring/Spring Boot
+ * Assignment: 1
+ * Author(s): Wynne Tran
+ * Student Number: 101161665
+ * Date: Nov 4 2021
+ * Description:  this page is RecipeService, connecting RecipeRepository to RecipeController
+ ******************************************************************************** */
 package com.example.assignment.services;
 
 import com.example.assignment.model.Recipes;
@@ -7,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +31,7 @@ public class RecipeService {
         recipeRepository.save(recipe);
     }
 
+
     public List<Recipes> findByTitle(String title) {
         // TODO Auto-generated method stub
         return  recipeRepository.findByTitleLike("%"+title+"%");
@@ -34,6 +45,10 @@ public class RecipeService {
 
     public List<Recipes> findAll(){
             return recipeRepository.findAll(Sort.by(Sort.Direction.ASC, "date"));
+    }
+
+    public void deleteRecipe(Long id) {
+        recipeRepository .deleteById(id);
     }
 
 

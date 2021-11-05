@@ -1,6 +1,17 @@
+
+/* ********************************************************************************
+ * Project: Create a Recipe Project Using Spring/Spring Boot
+ * Assignment: 1
+ * Author(s): Wynne Tran
+ * Student Number: 101161665
+ * Date: Nov 4 2021
+ * Description:  this page is a controller that displays registration  form and handling add new user
+ ******************************************************************************** */
+
 package com.example.assignment.controller;
 
 import com.example.assignment.model.Users;
+import com.example.assignment.services.UploadFileService;
 import com.example.assignment.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +30,8 @@ public class RegisterController {
     private UserService userService;
     @Autowired
     ServletContext context;
+    @Autowired
+    UploadFileService uploadFileService;
 
     @GetMapping("/register")
     public String registerForm(Model model){
@@ -32,22 +45,10 @@ public class RegisterController {
             BindingResult bindingResult, Model model) throws IOException {
         MultipartFile files = user.getMultipartFile();
         user.setImage("none.png");
+        assert files != null;
         if(!files.isEmpty()){
-            try {
-                String fileName = files.getOriginalFilename();
-                String dirLocation ="Assignment/src/main/resources/static/image/";
-                File file = new File(dirLocation);
-                if(!file.exists()) {
-                    file.mkdir();
-                }
-                user.setImage(fileName);
-                byte[] bytes = files.getBytes();
-                BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(dirLocation+new File(fileName)));
-                bufferedOutputStream.write(bytes);
-                bufferedOutputStream.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            uploadFileService.UploadFileHandling(files);
+            user.setImage(files.getOriginalFilename());
         }
 
         if (!Objects.equals(user.getPassword(), user.getRepeatPassword())){

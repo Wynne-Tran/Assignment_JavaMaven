@@ -1,3 +1,12 @@
+
+/* ********************************************************************************
+ * Project: Create a Recipe Project Using Spring/Spring Boot
+ * Assignment: 1
+ * Author(s): Wynne Tran
+ * Student Number: 101161665
+ * Date: Nov 4 2021
+ * Description:  this page is FavoriteService, connecting FavoriteRepository to FavoriteController
+ ******************************************************************************** */
 package com.example.assignment.services;
 
 import com.example.assignment.model.Favorite;
@@ -15,6 +24,12 @@ public class FavoriteService {
 
     public void addToFavorite(Favorite favorite){
             favoriteRepository.save(favorite);
+    }
+    public void deleteFavorite(Integer id){
+        favoriteRepository.deleteById(id);
+    }
+    public Favorite findOne(Integer id) {
+        return favoriteRepository.findById(id).orElse(null);
     }
 
     public List<Favorite> findByEmail(String email) {

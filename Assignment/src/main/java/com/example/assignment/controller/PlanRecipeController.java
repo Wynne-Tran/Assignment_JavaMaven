@@ -1,3 +1,15 @@
+
+/* ********************************************************************************
+ * Project: Create a Recipe Project Using Spring/Spring Boot
+ * Assignment: 1
+ * Author(s): Wynne Tran
+ * Student Number: 101161665
+ * Date: Nov 4 2021
+ * Description: This page is a controller for
+ displaying, moving, deleting and change color event on Plan Recipe page
+ ******************************************************************************** */
+
+
 package com.example.assignment.controller;
 
 import com.example.assignment.model.Plan_Recipe;
@@ -30,7 +42,7 @@ public class PlanRecipeController {
     public ModelAndView calendar(HttpSession session) {
         ModelAndView mv = new ModelAndView("planrecipe");
         String email = (String)session.getAttribute("email");
-        ArrayList recipeTitle = new ArrayList();
+        ArrayList<String> recipeTitle = new ArrayList<>();
         List<Recipes> userRecipe = userService.findOne(email).getRecipes();
         for(Recipes recipe : userRecipe){
             recipeTitle.add(recipe.getTitle());

@@ -1,3 +1,14 @@
+
+/* ********************************************************************************
+ * Project: Create a Recipe Project Using Spring/Spring Boot
+ * Assignment: 1
+ * Author(s): Wynne Tran
+ * Student Number: 101161665
+ * Date: Nov 4 2021
+ * Description:  this page is a controller that displays registration  form and handling add new user
+ ******************************************************************************** */
+
+
 package com.example.assignment.controller;
 
 import com.example.assignment.model.Favorite;
@@ -45,4 +56,6 @@ public class SearchController {
         model.addAttribute("recipes", recipeService.findAll());
         return "Search";
     }
+
+
 }

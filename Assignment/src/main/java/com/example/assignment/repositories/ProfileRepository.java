@@ -5,15 +5,16 @@
  * Author(s): Wynne Tran
  * Student Number: 101161665
  * Date: Nov 4 2021
- * Description:  this page is the standard way of persisting Java objects into Favorite databases
+ * Description:  the repository with all logical read and write operations for Recipes entity
  ******************************************************************************** */
+
 package com.example.assignment.repositories;
 
-import com.example.assignment.model.Favorite;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.assignment.model.Recipes;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
+@Repository
+public interface ProfileRepository extends CrudRepository<Recipes, Long> {
 
-public interface FavoriteRepository extends JpaRepository <Favorite, Integer> {
-    List<Favorite> findByUserEmail(String email);
 }

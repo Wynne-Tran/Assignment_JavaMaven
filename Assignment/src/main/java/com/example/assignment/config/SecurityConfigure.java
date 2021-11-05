@@ -1,5 +1,14 @@
-package com.example.assignment.config;
+/* ********************************************************************************
+* Project: Create a Recipe Project Using Spring/Spring Boot
+        * Assignment: 1
+        * Author(s): Wynne Tran
+        * Student Number: 101161665
+        * Date: Nov 4 2021
+        * Description: This page for configuration that allow user access html page, h2-console and PasswordEncoder....
+******************************************************************************** */
 
+
+package com.example.assignment.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +18,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.sql.DataSource;
@@ -31,7 +39,9 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder()).rolePrefix("ROLE_");
     }
 
-    private PasswordEncoder passwordEncoder() {
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        // TODO Auto-generated method stub
         return new BCryptPasswordEncoder();
     }
 

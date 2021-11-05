@@ -1,3 +1,12 @@
+
+/* ********************************************************************************
+ * Project: Create a Recipe Project Using Spring/Spring Boot
+ * Assignment: 1
+ * Author(s): Wynne Tran
+ * Student Number: 101161665
+ * Date: Nov 4 2021
+ * Description:  this page is UserService, connecting UserRepository to UserController
+ ******************************************************************************** */
 package com.example.assignment.services;
 
 import com.example.assignment.model.Roles;
@@ -18,7 +27,6 @@ import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 @Service
-
 public class UserService {
     @Autowired
     private UserRepository userRepository;
