@@ -6,7 +6,7 @@
  * Student Number: 101161665
  * Date: Nov 4 2021
  * Description: This page is a controller for displaying index page (login)
- 2 account available:
+ 2 accounts available:
                 wynnetran@gmail.com - zzzz (password)
                 shitran@gmail.com - zzzz (password)
  ******************************************************************************** */

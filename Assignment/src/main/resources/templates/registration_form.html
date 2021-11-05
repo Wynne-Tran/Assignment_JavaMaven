@@ -26,46 +26,26 @@
 
 <!-- Full Page Intro -->
 <div class="view full-page-intro" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg'); background-repeat: no-repeat; background-size: cover;">
-
     <!-- Mask & flexbox options-->
     <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
-
         <!-- Content -->
         <div class="container">
-
             <!--Grid row-->
             <div class="row wow fadeIn">
-
                 <!--Grid column-->
                 <div class="col-md-6 mb-4 white-text text-center text-md-left">
-
-                    <h1 class="display-4 font-weight-bold">Share your recipe !</h1>
-
-                    <hr class="hr-light">
-
-                    <p>
-                        <strong>Best & free guide for your meal</strong>
-                    </p>
-
-                    <p class="mb-4 d-none d-md-block">
-                        <strong>The most famous recipes on the world. Loved by over 500 000 users. Video and written versions
-                            available. Create your own, share your favorite !!!.</strong>
-                    </p>
-
+                    <div th:replace="fragments/greeting :: greeting"></div>
                     <a th:href="@{/}" class="btn btn-outline-light">Log In
                         <i class="fas fa-graduation-cap ml-2"></i>
                     </a>
-
                 </div>
                 <!--Grid column-->
                 <!--Grid column-->
                 <div class="col-md-6 col-xl-5 mb-4">
                     <!--Card-->
                     <div class="card mb-3">
-
                         <!--Card content-->
                         <div class="card-body">
-
                             <!-- Form -->
                             <form  th:action="@{/register}" th:object="${user}" method="post" enctype="multipart/form-data" >
                                 <!-- Heading -->
@@ -150,51 +130,5 @@
 
 <!-- Full Page Intro -->
 </body>
-<footer class="page-footer text-center font-small mt-4 wow fadeIn">
-    <hr class="my-4">
-
-    <!-- Social icons -->
-    <div class="pb-4">
-        <a href="#" target="_blank">
-            <i class="fab fa-facebook-f mr-3"></i>
-        </a>
-
-        <a href="#" target="_blank">
-            <i class="fab fa-twitter mr-3"></i>
-        </a>
-
-        <a href="#" target="_blank">
-            <i class="fab fa-youtube mr-3"></i>
-        </a>
-
-        <a href="#" target="_blank">
-            <i class="fab fa-google-plus-g mr-3"></i>
-        </a>
-
-        <a href="#" target="_blank">
-            <i class="fab fa-dribbble mr-3"></i>
-        </a>
-
-        <a href="#" target="_blank">
-            <i class="fab fa-pinterest mr-3"></i>
-        </a>
-
-        <a href="#" target="_blank">
-            <i class="fab fa-github mr-3"></i>
-        </a>
-
-        <a href="#" target="_blank">
-            <i class="fab fa-codepen mr-3"></i>
-        </a>
-    </div>
-    <!-- Social icons -->
-
-    <!--Copyright-->
-    <div class="footer-copyright py-3">
-        © 2019 Copyright:
-        <a href="#"> The Achievers Group </a>
-    </div>
-    <!--/.Copyright-->
-
-</footer>
+<div th:replace="fragments/footer :: footer"></div>
 </html>
