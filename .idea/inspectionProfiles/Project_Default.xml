@@ -4,7 +4,7 @@
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="8">
+          <list size="9">
             <item index="0" class="java.lang.String" itemvalue="sec:authentication" />
             <item index="1" class="java.lang.String" itemvalue="sec:authorize" />
             <item index="2" class="java.lang.String" itemvalue="${users.name}" />
@@ -13,6 +13,7 @@
             <item index="5" class="java.lang.String" itemvalue="${#authentication.getprincipal().getsomeproperty()}" />
             <item index="6" class="java.lang.String" itemvalue="layout:fragment" />
             <item index="7" class="java.lang.String" itemvalue="layout:decorate" />
+            <item index="8" class="java.lang.String" itemvalue="layout:fragments" />
           </list>
         </value>
       </option>

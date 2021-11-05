@@ -3,190 +3,13 @@
       xmlns:sec="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta http-equiv="x-ua-compatible" content="ie=edge/">
-    <title>Search Recipe</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="css/style.min.css" rel="stylesheet">
-    <link href="/static/css/origin.css" rel="stylesheet">
+<head >
+    <div th:replace="fragments/head :: head"></div>
+    <title>Search</title>
 </head>
-
 <body>
-
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-    <div class="container">
-
-        <a class="navbar-brand" href="/profile">
-            <img th:src="@{image/logo.png}" width="30" alt="logo" />
-        </a>
-
-        <!-- Collapse -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Links -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-            <!-- Left -->
-            <ul class="navbar-nav mr-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/profile">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/planrecipe" >Plan Recipe</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/search">Search</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/viewrecipe">View Recipe</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/createrecipe">Create Recipe</a>
-                </li>
-            </ul>
-
-            <!-- Right -->
-            <ul class="navbar-nav nav-flex-icons">
-                <li class="nav-item" style="align-content: center; font-size: x-large">
-                    <a class="nav-link" href="#" th:text=" |Hello, ${session.username} !| ">Hello </a>
-                </li>
-                <li class="nav-item" >
-                    <form method="post" th:action="@{/logout}"  sec:authorize = "isAuthenticated()">
-                        <input  class="btn btn-outline-white" type="submit" value="Log Out">
-                    </form>
-                </li>
-            </ul>
-
-        </div>
-
-    </div>
-</nav>
-<!-- Navbar -->
-
-<!--Carousel Wrapper-->
-<div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
-
-    <!--Indicators-->
-    <ol class="carousel-indicators">
-        <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="2"></li>
-    </ol>
-    <!--/.Indicators-->
-
-    <!--Slides-->
-    <div class="carousel-inner" role="listbox">
-
-        <!--First slide-->
-        <div class="carousel-item active">
-            <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Slides/img%20(88).jpg'); background-repeat: no-repeat; background-size: cover;">
-                <!-- Mask & flexbox options-->
-                <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
-                    <!-- Content -->
-                    <div class="text-center white-text mx-5 wow fadeIn">
-                        <h1 class="mb-4">
-                            <strong>Share your recipe !</strong>
-                        </h1>
-                        <p>
-                            <strong>Best & free guide for your meal</strong>
-                        </p>
-                        <p class="mb-4 d-none d-md-block">
-                            <strong>The most famous recipes on the world. Loved by over 500 000 users. Video and written versions
-                                available. Create your own, share your favorite !!!</strong>
-                        </p>
-                    </div>
-                    <!-- Content -->
-
-                </div>
-                <!-- Mask & flexbox options-->
-
-            </div>
-        </div>
-        <!--/First slide-->
-
-        <!--Second slide-->
-        <div class="carousel-item">
-            <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/94.jpg'); background-repeat: no-repeat; background-size: cover;">
-
-                <!-- Mask & flexbox options-->
-                <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
-
-                    <!-- Content -->
-                    <div class="text-center white-text mx-5 wow fadeIn">
-                        <h1 class="mb-4">
-                            <strong>Share your recipe !</strong>
-                        </h1>
-                        <p>
-                            <strong>Best & free guide for your meal</strong>
-                        </p>
-                        <p class="mb-4 d-none d-md-block">
-                            <strong>The most famous recipes on the world. Loved by over 500 000 users. Video and written versions
-                                available. Create your own, share your favorite !!!</strong>
-                        </p>
-                    </div>
-                    <!-- Content -->
-                </div>
-                <!-- Mask & flexbox options-->
-            </div>
-        </div>
-        <!--/Second slide-->
-        <!--Third slide-->
-        <div class="carousel-item">
-            <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/92.jpg'); background-repeat: no-repeat; background-size: cover;">
-                <!-- Mask & flexbox options-->
-                <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
-                    <!-- Content -->
-                    <div class="text-center white-text mx-5 wow fadeIn">
-                        <h1 class="mb-4">
-                            <strong>Share your recipe !</strong>
-                        </h1>
-                        <p>
-                            <strong>Best & free guide for your meal</strong>
-                        </p>
-                        <p class="mb-4 d-none d-md-block">
-                            <strong>The most famous recipes on the world. Loved by over 500 000 users. Video and written versions
-                                available. Create your own, share your favorite !!!</strong>
-                        </p>
-                    </div>
-                    <!-- Content -->
-
-                </div>
-                <!-- Mask & flexbox options-->
-
-            </div>
-        </div>
-        <!--/Third slide-->
-
-    </div>
-    <!--/.Slides-->
-
-    <!--Controls-->
-    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-    <!--/.Controls-->
-
-</div>
-<!--/.Carousel Wrapper-->
-
+<div th:replace="fragments/header :: navbar"></div>
+<div th:replace="fragments/SlideBar :: slidebar"></div>
 <!--Main layout-->
 <main>
 <div class="container">
@@ -231,7 +54,6 @@
                         <hr>
                         <strong th:text="'Date created: ' + ${recipe.date}"></strong>
                         <!-- CTA -->
-
                         <div th:if="${recipe.getFavorite_like != '1'}">
                             <form action="/viewrecipe" method="post">
                                 <input type="hidden" th:name="id" th:value="${recipe.id}">
@@ -244,7 +66,6 @@
                                 <button class="btn btn-outline-danger" > <i class="fas fa-trash fa-lg "> </i> </button>
                             </form>
                         </div>
-
                     </div>
                     <!--Grid column-->
                 </div>
@@ -257,62 +78,7 @@
     </div>
 </main>
 <!--Main layout-->
-
-<!--Footer-->
-<footer class="page-footer text-center font-small mt-4 wow fadeIn">
-    <hr class="my-4">
-    <!-- Social icons -->
-    <div class="pb-4">
-        <a href="#" target="_blank">
-            <i class="fab fa-facebook-f mr-3"></i>
-        </a>
-        <a href="#" target="_blank">
-            <i class="fab fa-twitter mr-3"></i>
-        </a>
-        <a href="#" target="_blank">
-            <i class="fab fa-youtube mr-3"></i>
-        </a>
-        <a href="#" target="_blank">
-            <i class="fab fa-google-plus-g mr-3"></i>
-        </a>
-        <a href="#" target="_blank">
-            <i class="fab fa-dribbble mr-3"></i>
-        </a>
-        <a href="#" target="_blank">
-            <i class="fab fa-pinterest mr-3"></i>
-        </a>
-        <a href="#" target="_blank">
-            <i class="fab fa-github mr-3"></i>
-        </a>
-        <a href="#" target="_blank">
-            <i class="fab fa-codepen mr-3"></i>
-        </a>
-    </div>
-    <!-- Social icons -->
-
-    <!--Copyright-->
-    <div class="footer-copyright py-3">
-        © 2021 Copyright:
-        <a href="#"> The Achievers Group </a>
-    </div>
-    <!--/.Copyright-->
-</footer>
-<!--/.Footer-->
-
-<!-- SCRIPTS -->
-<!-- JQuery -->
-<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="js/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="js/mdb.min.js"></script>
-<!-- Initializations -->
-<script type="text/javascript">
-    // Animations initialization
-    new WOW().init();
-</script>
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 
 </html>

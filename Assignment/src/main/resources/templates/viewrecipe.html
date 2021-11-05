@@ -5,73 +5,15 @@
       xmlns="http://www.w3.org/1999/html">
 
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <div th:replace="fragments/head :: head"></div>
     <title>View Recipe</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="css/style.min.css" rel="stylesheet">
     <link href="/static/css/profile.css" rel="stylesheet" th:href="@{css/profile.css}"/>
 </head>
-<body>
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar " style="margin-left: auto">
-    <div class="container">
-        <!-- Collapse -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Links -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <a class="navbar-brand" href="/profile">
-                <img th:src="@{image/logo.png}" width="30" alt="logo" />
-            </a>
-            <!-- Left -->
-            <ul class="navbar-nav mr-auto" style="font-weight: bold; font-size: large">
-                <li class="nav-item">
-                    <a class="nav-link" href="/profile">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/planrecipe" >Plan Recipe</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/search">Search</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/viewrecipe">View Recipe</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/createrecipe">Create Recipe</a>
-                </li>
-            </ul>
-
-            <!-- Right -->
-            <ul class="navbar-nav nav-flex-icons" style="font-weight: bold; font-size: large">
-                <li class="nav-item" style="align-content: center; font-size: x-large">
-                    <a class="nav-link" href="#" th:text=" |Hello, ${session.username} !| ">Hello </a>
-                </li>
-                <li class="nav-item">
-                    <form method="post" th:action="@{/logout}"  sec:authorize = "isAuthenticated()">
-                        <input  class="btn btn-outline-white" type="submit" value="Log Out">
-                    </form>
-                </li>
-            </ul>
-
-        </div>
-    </div>
-</nav>
+<body><div th:replace="fragments/header :: navbar"></div>
 <div class="container1">
     <main>
         <div style="align-items: center"><h1>All Recipes You Need...</h1></div>
         <div class="row row-cols-md-1 align-items-start">
-
             <!-- Grid column -->
             <div class="col-md-4 " th:each="recipe:${recipes}">
                 <div class="card" style="width: 300px">
@@ -110,45 +52,5 @@
     </main>
 </div>
 </body>
-
-<!--Footer-->
-<footer class="page-footer text-center font-small mt-4 wow fadeIn">
-    <hr class="my-4">
-    <!-- Social icons -->
-    <div class="pb-4">
-        <a href="#" target="_blank">
-            <i class="fab fa-facebook-f mr-3"></i>
-        </a>
-        <a href="#" target="_blank">
-            <i class="fab fa-twitter mr-3"></i>
-        </a>
-        <a href="#" target="_blank">
-            <i class="fab fa-youtube mr-3"></i>
-        </a>
-        <a href="#" target="_blank">
-            <i class="fab fa-google-plus-g mr-3"></i>
-        </a>
-        <a href="#" target="_blank">
-            <i class="fab fa-dribbble mr-3"></i>
-        </a>
-        <a href="#" target="_blank">
-            <i class="fab fa-pinterest mr-3"></i>
-        </a>
-        <a href="#" target="_blank">
-            <i class="fab fa-github mr-3"></i>
-        </a>
-        <a href="#" target="_blank">
-            <i class="fab fa-codepen mr-3"></i>
-        </a>
-    </div>
-    <!-- Social icons -->
-
-    <!--Copyright-->
-    <div class="footer-copyright py-3">
-        © 2021 Copyright:
-        <a href="#"> The Achievers Group </a>
-    </div>
-    <!--/.Copyright-->
-</footer>
-<!--/.Footer-->
+<div th:replace="fragments/footer :: footer"></div>
 </html>
