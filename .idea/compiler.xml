@@ -6,16 +6,34 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Assignment" />
+        <module name="Recipe_Data" />
+        <module name="Recipe_Web" />
+        <module name="Recipe_Repository" />
+        <module name="Recipe_Service" />
+        <module name="Recipe_Configuration" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Assignment" target="11" />
+      <module name="Recipe_Config" target="16" />
+      <module name="Recipe_Configuration" target="16" />
+      <module name="Recipe_Data" target="16" />
+      <module name="Recipe_data" target="11" />
+      <module name="Recipe_Repository" target="16" />
+      <module name="Recipe_Service" target="16" />
+      <module name="Recipe_Web" target="16" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Assignment" options="-parameters" />
+      <module name="Recipe_Config" options="-parameters" />
+      <module name="Recipe_Configuration" options="-parameters" />
+      <module name="Recipe_Data" options="-parameters" />
+      <module name="Recipe_Repository" options="-parameters" />
+      <module name="Recipe_Service" options="-parameters" />
+      <module name="Recipe_Web" options="-parameters" />
+      <module name="Recipe_data" options="-parameters" />
     </option>
   </component>
 </project>

@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Recipe_Configuration:war">
+    <output-path>$PROJECT_DIR$/Assignment/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>false</exploded>
+        <module>Recipe_Configuration</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="archive" name="Recipe_Configuration-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Recipe_Configuration:war exploded" />
+    </root>
+  </artifact>
+</component>

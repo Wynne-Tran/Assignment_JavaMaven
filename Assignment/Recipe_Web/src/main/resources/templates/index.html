@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html
+        xmlns = "http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>LogIn</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet" th:href="@{css/mdb.min.css}"/>
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{css/style.css}" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+    <script th:src="@{webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<!-- Full Page Intro -->
+<div class="view full-page-intro" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg'); background-repeat: no-repeat; background-size: cover;">
+    <!-- Mask & flexbox options-->
+    <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+        <!-- Content -->
+        <div class="container">
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+                <!--Grid column-->
+                <div class="col-md-6 mb-4 white-text text-center text-md-left">
+                    <div th:replace="fragments/greeting :: greeting"></div>
+                    <a th:href="@{register}" class="btn btn-outline-light">Registration
+                        <i class="fas fa-graduation-cap ml-2"></i>
+                    </a>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-md-6 col-xl-5 mb-4  ">
+                    <!--Card-->
+                    <div class="card mb-3">
+                        <!--Card content-->
+                        <div class="card-body">
+                            <form action="#" th:action = "@{/login}"  method="post">
+                                <fieldset>
+                                    <legend class="display-4  text-center"> Login</legend>
+                                    <div  th:if="${param.error}">
+                                        <p class="text text-center text-primary alert alert-danger"> Email or password is incorrect </p>
+                                    </div>
+                                    <div  th:if="${showUsername}">
+                                        <p class="text text-center text-primary alert alert-success"> Registration success, please log in !</p>
+                                    </div>
+                                    <div class="form-group has-danger">
+                                        <label class="form-label mt-4">Email address</label>
+                                        <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" name = "username" />
+                                    </div>
+                                    <div class="form-group ">
+                                        <label  class="form-label mt-4">Password</label>
+                                        <input type="password" class="form-control" placeholder="Password" name="password" />
+                                    </div>
+                                    <br>
+                                    <div class="form-group has-danger">
+                                        <button type="submit" class="btn btn-outline-dark">Login</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                            <!-- Form -->
+                        </div>
+                    </div>
+                    <!--/.Card-->
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+        <!-- Content -->
+    </div>
+    <!-- Mask & flexbox options-->
+</div>
+<!-- Full Page Intro -->
+</body>
+<div th:replace="fragments/footer :: footer"></div>
+</html>
+
