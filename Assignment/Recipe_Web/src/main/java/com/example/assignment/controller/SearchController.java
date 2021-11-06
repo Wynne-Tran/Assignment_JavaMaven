@@ -54,7 +54,7 @@ public class SearchController {
         recipeService.findOne(id).setFavorite_like("2");
         favoriteService.addToFavorite(newFavorite);
         model.addAttribute("recipes", recipeService.findAll());
-        return "Search";
+        return "redirect:/profile";
     }
 
 
