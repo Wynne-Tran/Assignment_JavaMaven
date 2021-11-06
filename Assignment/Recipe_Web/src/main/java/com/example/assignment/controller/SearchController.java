@@ -51,7 +51,7 @@ public class SearchController {
     public  String addToFavorite(Model model, HttpSession session, @RequestParam("id") Long id){
         String email = (String)session.getAttribute("email");
         Favorite newFavorite = new Favorite(email, id, recipeService.findOne(id));
-        recipeService.findOne(id).setFavorite_like("1");
+        recipeService.findOne(id).setFavorite_like("2");
         favoriteService.addToFavorite(newFavorite);
         model.addAttribute("recipes", recipeService.findAll());
         return "Search";

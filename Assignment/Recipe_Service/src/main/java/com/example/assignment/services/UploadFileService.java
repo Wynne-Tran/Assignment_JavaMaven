@@ -25,7 +25,7 @@ public class UploadFileService {
         if(!files.isEmpty()){
             try {
                 String fileName = files.getOriginalFilename();
-                String dirLocation ="Assignment/src/main/resources/static/image/";
+                String dirLocation ="Assignment/Recipe_Web/src/main/resources/static/image/";
                 File file = new File(dirLocation);
                 if(!file.exists()) {
                     file.mkdir();
