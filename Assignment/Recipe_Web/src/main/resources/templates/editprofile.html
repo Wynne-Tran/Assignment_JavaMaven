@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head >
+    <div th:replace="fragments/head :: head"></div>
+    <title>Create Recipe</title>
+</head>
+<body>
+<div th:replace="fragments/header :: navbar"></div>
+<div th:replace="fragments/SlideBar :: slidebar"></div>
+<!--Main layout-->
+<main>
+    <div class="container" style="max-width: 50em; margin-top: 50px">
+        <!-- Form -->
+        <form  th:action="@{/editprofile}"  method="post" enctype="multipart/form-data" >
+            <!-- Heading -->
+            <h3 class="card-title  text-center">
+                <strong>Edit your profile</strong>
+            </h3>
+            <div class="container" style="max-width: 50em">
+                <div style="max-width: 50em" th:if="${done}">
+                    <p class="text text-center text-primary alert alert-success"> Profile updated... !</p>
+                </div>
+            </div>
+            <hr>
+            <div class="md-form">
+                <input type="text"  class="form-control" name="name" placeholder="Username" />
+
+                <div class="md-form">
+                    <input type="text" name="jobTitle" class="form-control"   placeholder="Job Title" />
+                </div>
+
+                <div class="md-form">
+                    <textarea type="text" name="about" class="form-control" placeholder="Describe yourself here..." style="min-height:  60px">
+                    </textarea>
+                </div>
+
+                <div class="md-form">
+                    <i class="fas fa-image prefix grey-text"></i>
+                    <input type="file" name="image"  accept="image/png, image/jpeg, image/jpg" >
+                </div>
+            </div>
+
+            <div class="text-center row" >
+                <button class="btn btn-outline-dark">Save</button>
+                <a class="btn btn-outline-dark" th:href="@{/profile}" >Cancel</a>
+            </div>
+        </form>
+        <!-- Form -->
+    </div>
+</main>
+<!--Main layout-->
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

@@ -33,6 +33,12 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public void updateUser(Users user) {
+        BCryptPasswordEncoder encoder = new  BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(user.getPassword()));
+        userRepository.save(user);
+    }
+
     public void createAdmin(Users user) {
         BCryptPasswordEncoder  encoder = new  BCryptPasswordEncoder();
         user.setPassword(encoder.encode(user.getPassword()));

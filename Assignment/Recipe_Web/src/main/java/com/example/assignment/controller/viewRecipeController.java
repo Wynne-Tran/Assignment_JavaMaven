@@ -32,6 +32,7 @@ public class viewRecipeController {
     @Autowired
     private FavoriteService favoriteService;
 
+
     @GetMapping("/viewrecipe")
     public  String viewRecipe(Model model, HttpSession session){
         String email = (String)session.getAttribute("email");
@@ -58,6 +59,17 @@ public class viewRecipeController {
     @PostMapping("/deleteRecipe")
     public  String deleteRecipe(@RequestParam("id") Long id){
         recipeService.deleteRecipe(id);
+        return "redirect:/viewrecipe";
+    }
+
+    @PostMapping("/deleteFavRecipe")
+    public  String deleteFavRecipe(@RequestParam("id") Long id, HttpSession session){
+        System.out.println(id);
+        String email = (String)session.getAttribute("email");
+        int favId = favoriteService.findFavId(id, email).getId();
+        System.out.println("favId: " + favId);
+        recipeService.findOne(id).setFavorite_like("0");
+        favoriteService.deleteFavorite(favId);
         return "redirect:/viewrecipe";
     }
 }

@@ -15,78 +15,54 @@
         <div class="row ">
             <div class="left col-lg-4">
                 <div class="photo-left">
-                    <img class="photo" th:src="@{${'image/' + session.image }}" th:alt= "*{session.image}" />
-
+                    <img class="photo" th:src="@{${'image/' + user.image }}" th:alt= "*{user.image}" />
                 </div>
-                <h3 class="name" th:text="${session.username}"></h3>
-                <p class="info">UI/UX Designer</p>
-                <p class="info" th:text="${session.email}"></p>
+                <h3 class="name" th:text="${user.name}"> </h3>
+                <p class="info" th:text="${user.jobTitle}"></p>
+                <a th:href="@{/viewplans}" ><i class="fas fa-pencil-alt prefix grey-text"></i>&nbsp; View Your Plans</a>
+                <a th:href="@{/forgotpassword}"  > <i class="fas fa-pencil-alt prefix grey-text"> </i>&nbsp; Change Password </a>
+                <a th:href="@{/editprofile}" ><i class="fas fa-pencil-alt prefix grey-text"></i>&nbsp; Edit Profile</a>
                 <div class="stats row">
                     <div class="stat col-xs-4" style="padding-right: 50px;">
-                        <p class="number-stat">3,619</p>
-                        <p class="desc-stat">Followers</p>
+                        <p class="number-stat" th:text="${user.recipeCount}"></p>
+                        <a  th:href="@{/profile}" >Recipes</a>
                     </div>
                     <div class="stat col-xs-4">
-                        <p class="number-stat">42</p>
-                        <p class="desc-stat">Following</p>
+                        <p class="number-stat" th:text="${user.likeCount}"></p>
+                        <a th:href="@{/viewFavorites}" > Likes</a>
                     </div>
                     <div class="stat col-xs-4" style="padding-left: 50px;">
-                        <p class="number-stat">38</p>
-                        <p class="desc-stat">Uploads</p>
+                        <p class="number-stat" th:text="${user.shoppingCount}"></p>
+                        <a class="desc-stat" th:href="@{/editprofile}" >Carts</a>
                     </div>
                 </div>
-                <p class="desc">Hi ! My name is <span style="color: #4a148c" th:text="${session.username}"></span>. I'm a UI/UX Designer from Paris, in France. I really enjoy photography and mountains.</p>
-                <div class="social">
-                    <i class="fa fa-facebook-square" aria-hidden="true"></i>
-                    <i class="fa fa-twitter-square" aria-hidden="true"></i>
-                    <i class="fa fa-pinterest-square" aria-hidden="true"></i>
-                    <i class="fa fa-tumblr-square" aria-hidden="true"></i>
-                </div>
+                <p class="desc">Hi ! My name is <span style="color: #4a148c" th:text="${user.name}"></span>. <span th:text="${user.about}"></span></p>
             </div>
             <!--------------- Form user-------------------->
             <div class="right col-lg-8" >
                 <div class="row row-cols-md-1">
                     <!-- Grid column -->
-                    <div class="col-md-4 " th:each="recipe:${session.userRecipe}">
+                    <div class="col-md-4 " th:each="recipe:${user.recipes}" th:if="${viewRecipes}">
                         <div class="card h-80">
                             <img style="height: 200px" class="card-img-top" th:src="@{${'image/' + recipe.image }}" th:alt= "*{recipe.image}"  />
                             <div class="card-body">
                                 <strong class="card-title" th:text="${recipe.title}"></strong>
                                 <p class="card-text" th:text=" ${recipe.creater}"></p>
                                 <p class="card-text" th:text=" ${recipe.description}"></p>
-                                <div >
+                                <div  >
                                     <nav class="navbar navbar-light bg-light">
                                         <ul class="navbar-nav mr-auto" > <li th:text="${recipe.date}"></li> </ul>
                                         <ul class="navbar-nav ml-auto">
-                                            <form action="/profile" method="post">
-                                                <input type="hidden" th:name="id" th:value="${recipe.id}">
-                                                <button clas="btn btn-outline-danger" style="color: #ed0c44;"><i class="fas fa-trash-alt fa-lg"> </i> </button>
-                                            </form>
-                                        </ul>
-                                    </nav>
-                                </div>
-                        </div>
-                    </div>
-                    <!-- Grid column -->
-                    <br>
-                </div>
-
-                    <!-- Grid column -->
-                    <div class="col-md-4 " th:each="fav:${favorites}">
-                        <div class="card h-80">
-                            <img style="height: 200px" class="card-img-top" th:src="@{${'image/' + fav.getRecipes().image }}" th:alt= "*{fav.getRecipes().image}"  />
-                            <div class="card-body">
-                                <strong class="card-title" th:text="${fav.getRecipes().title}"></strong>
-                                <p class="card-text" th:text=" ${fav.getRecipes().creater}"></p>
-                                <p class="card-text" th:text=" ${fav.getRecipes().description}"></p>
-                                <div >
-                                    <nav class="navbar navbar-light bg-light">
-                                        <ul class="navbar-nav mr-auto" > <li th:text="${fav.getRecipes().date}"></li> </ul>
-                                        <ul class="navbar-nav ml-auto">
-                                            <form action="/deletefavorite" method="post">
-                                                <input type="hidden" th:name="id" th:value="${fav.id}">
-                                                <button clas="btn btn-outline-danger" style="color: #ed0c44;"><i class="fas fa-trash-alt fa-lg"> </i> </button>
-                                            </form>
+                                            <li class="row">
+                                                <form action="/profile" method="post">
+                                                    <input type="hidden" th:name="id" th:value="${recipe.id}">
+                                                    <button style="color: #0c39ed; border: none; background-color: transparent"><i class="fas fa-eye fa-lg"> </i> </button>
+                                                </form>
+                                                <form action="/profile" method="post">
+                                                    <input type="hidden" th:name="id" th:value="${recipe.id}">
+                                                    <button  style="color: #ed0c44; border: none; background-color: transparent"><i class="fas fa-trash-alt fa-lg"> </i> </button>
+                                                </form>
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -95,12 +71,10 @@
                         <!-- Grid column -->
                         <br>
                     </div>
+
+                    </div>
                 </div>
             </div>
-
-
-
-        </div>
     </main>
 </div>
 </body>

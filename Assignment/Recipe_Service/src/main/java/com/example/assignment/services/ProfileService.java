@@ -9,16 +9,22 @@
  ******************************************************************************** */
 package com.example.assignment.services;
 
+import com.example.assignment.repositories.ProfileRepository;
 import com.example.assignment.repositories.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProfileService {
-
     @Autowired
     RecipeRepository recipeRepository;
+
+
     public void deleteRecipe(Long id) {
        recipeRepository .deleteById(id);
     }
+
+
 }
