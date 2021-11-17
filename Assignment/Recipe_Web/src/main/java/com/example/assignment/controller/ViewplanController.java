@@ -70,7 +70,7 @@ public class ViewplanController {
         String email = (String) session.getAttribute("email");
         Plan_Recipe editPlan = new Plan_Recipe (id, text, userService.findOne(email), start, end);
         er.save(editPlan);
-        return "planrecipe";
+        return "redirect:/viewplans";
     }
 
     @GetMapping("/addplan")
@@ -92,7 +92,7 @@ public class ViewplanController {
         Plan_Recipe newPlan = new Plan_Recipe (text, userService.findOne(email), start, end);
         er.save(newPlan);
         model.addAttribute("success", true);
-        return "planrecipe";
+        return "redirect:/viewplans";
     }
 
 }

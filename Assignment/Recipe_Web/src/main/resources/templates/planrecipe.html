@@ -130,6 +130,16 @@
   dp.contextMenu = new DayPilot.Menu({
     items: [
       {
+        text: "Edit",
+        onClick: function(args) {
+          var e = args.source;
+          var params = {
+            id: e.id()
+          };
+          window.location='/editplan/' + params.id
+        }
+      },
+      {
         text: "Delete",
         onClick: function(args) {
           var e = args.source;
