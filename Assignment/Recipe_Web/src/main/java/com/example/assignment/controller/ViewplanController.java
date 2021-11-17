@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
@@ -57,7 +56,7 @@ public class ViewplanController {
         List<Recipes> recipes =  recipeService.findAllUser(userService.findOne(email));
         model.addAttribute("recipeTitle", recipes);
         model.addAttribute("editPlan", er.findById(id));
-        model.addAttribute("editId", id);
+
         return "editPlan";
     }
 

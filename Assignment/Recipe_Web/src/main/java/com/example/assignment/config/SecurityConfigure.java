@@ -54,7 +54,7 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.authorizeRequests().antMatchers("/register", "/", "/forgotpassword", "/login", "/css/**", "/image/*", "/webjars/**, /console/**").permitAll()
+        http.authorizeRequests().antMatchers("/register", "/", "/forgotpassword", "/login",  "/css/**/**", "/css/**", "/image/*", "/webjars/**, /console/**").permitAll()
                 .antMatchers("/profile").hasAnyRole("USER, ADMIN")
                 .antMatchers(
                         "/viewrecipe", "/createrecipe", "/planrecipe",
