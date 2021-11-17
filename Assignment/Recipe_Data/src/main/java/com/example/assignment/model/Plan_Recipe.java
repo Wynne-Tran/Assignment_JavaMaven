@@ -12,6 +12,7 @@ package com.example.assignment.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -19,18 +20,43 @@ public class Plan_Recipe {
     @Id
     @GeneratedValue
     private Long id;
-    @Column(length=1000)
+    @NotNull
     private String text;
     @ManyToOne
     @JoinColumn(name="USER_EMAIL")
     @JsonBackReference
     private Users user;
+    @NotNull
     LocalDateTime start;
+    @NotNull
     LocalDateTime end;
     String color;
 
+
+    public Plan_Recipe(Long id, String text, Users user, LocalDateTime start, LocalDateTime end) {
+        this.id = id;
+        this.text = text;
+        this.user = user;
+        this.start = start;
+        this.end = end;
+    }
+
+    public Plan_Recipe() {
+    }
+
+    public Plan_Recipe(String text, Users user, LocalDateTime start, LocalDateTime end) {
+        this.text = text;
+        this.user = user;
+        this.start = start;
+        this.end = end;
+    }
+
     public LocalDateTime getStart() {
         return start;
+    }
+
+    public void setStart(String datestart) {
+        this.start = LocalDateTime.parse(datestart);
     }
 
     public void setStart(LocalDateTime start) {
@@ -39,6 +65,10 @@ public class Plan_Recipe {
 
     public LocalDateTime getEnd() {
         return end;
+    }
+
+    public void setEnd(String  dateend) {
+        this.end = LocalDateTime.parse(dateend);
     }
 
     public void setEnd(LocalDateTime end) {
