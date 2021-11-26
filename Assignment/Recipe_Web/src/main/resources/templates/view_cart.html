@@ -49,12 +49,10 @@
                         <div class="toolbar">
                             <div class="toolbar-item">
                                 Export as: &nbsp; <select id="format">
-                                <option value="svg">SVG</option>
-                                <option value="jpeg">JPEG</option>
-                                <option value="png">PNG</option>
+                                <option value="svg">CSV</option>
                             </select>
                                 &nbsp;
-                                <button id = "download" style=" border: none; background-color: transparent"><i class="fas fa-download fa-lg text-success me-3"> </i> </button>
+                                <a th:href="@{/shoppingcart}"  style=" border: none; background-color: transparent"><i class="fas fa-download fa-lg text-success me-3"> </i> </a>
                             </div>
                         </div>
                         <div id="dp"></div>
@@ -97,16 +95,6 @@
         </div>
     </main>
 </div>
-
-<script th:inline="javascript">
-    var elements = {
-        download: document.querySelector("#download"),
-        format: document.querySelector("#format")
-    };
-    elements.download.addEventListener("click", function() {
-        var format = elements.format.value;
-        dp.exportAs(format).download();
-    });
 
 </script>
 </body>

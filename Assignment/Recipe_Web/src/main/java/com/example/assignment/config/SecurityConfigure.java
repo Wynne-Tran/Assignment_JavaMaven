@@ -64,7 +64,7 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
                          "/viewingredient", "/viewingredient/*",
                         "/editingredient", "/editingredient/*",
                         "/addCart", "view_cart", "deleteCart",
-                        "/changepassword").hasAnyRole("USER, ADMIN") //hasRole("ADMIN")
+                        "/changepassword", "/shoppingcart").hasAnyRole("USER, ADMIN") //hasRole("ADMIN")
                 .and().formLogin().loginPage("/login").permitAll()
                 .defaultSuccessUrl("/profile").and().logout().logoutSuccessUrl("/")
                 ;
