@@ -10,8 +10,6 @@
 package com.example.assignment.repositories;
 
 import com.example.assignment.model.Favorite;
-import com.example.assignment.model.Recipes;
-import com.example.assignment.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

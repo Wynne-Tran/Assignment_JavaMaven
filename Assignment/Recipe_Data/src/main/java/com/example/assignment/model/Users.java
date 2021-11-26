@@ -62,6 +62,9 @@ public class Users implements Serializable {
     private List<Favorite> favorites;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Shopping_Cart> carts;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Plan_Recipe> plan_recipes;
 

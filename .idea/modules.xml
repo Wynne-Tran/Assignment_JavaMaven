@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/Assignment/Recipe_Repository/Recipe_Repository.iml" filepath="$PROJECT_DIR$/Assignment/Recipe_Repository/Recipe_Repository.iml" />
       <module fileurl="file://$PROJECT_DIR$/Assignment/Recipe_Service/Recipe_Service.iml" filepath="$PROJECT_DIR$/Assignment/Recipe_Service/Recipe_Service.iml" />
       <module fileurl="file://$PROJECT_DIR$/Assignment/Recipe_Web/Recipe_Web.iml" filepath="$PROJECT_DIR$/Assignment/Recipe_Web/Recipe_Web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Assignment/.mvn/wrapper/wrapper.iml" filepath="$PROJECT_DIR$/Assignment/.mvn/wrapper/wrapper.iml" />
     </modules>
   </component>
 </project>

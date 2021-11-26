@@ -13,12 +13,16 @@ package com.example.assignment.controller;
 
 import com.example.assignment.model.Favorite;
 import com.example.assignment.model.Recipes;
+import com.example.assignment.model.Users;
 import com.example.assignment.services.FavoriteService;
 import com.example.assignment.services.RecipeService;
+import com.example.assignment.services.ShoppingService;
+import com.example.assignment.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpSession;
@@ -31,6 +35,10 @@ public class viewRecipeController {
     private RecipeService recipeService;
     @Autowired
     private FavoriteService favoriteService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private ShoppingService shoppingService;
 
 
     @GetMapping("/viewrecipe")
@@ -42,6 +50,9 @@ public class viewRecipeController {
                     recipe.setFavorite_like("1");
                 }
         }
+        Users user = userService.findOne(email);
+        user.setShoppingCount(shoppingService.findByEmail(email).size());
+        session.setAttribute("cart",user.getShoppingCount());
         model.addAttribute("recipes", recipeService.findAll());
         return "viewrecipe";
     }
@@ -64,12 +75,11 @@ public class viewRecipeController {
 
     @PostMapping("/deleteFavRecipe")
     public  String deleteFavRecipe(@RequestParam("id") Long id, HttpSession session){
-        System.out.println(id);
         String email = (String)session.getAttribute("email");
         int favId = favoriteService.findFavId(id, email).getId();
-        System.out.println("favId: " + favId);
         recipeService.findOne(id).setFavorite_like("0");
         favoriteService.deleteFavorite(favId);
         return "redirect:/viewrecipe";
     }
+
 }

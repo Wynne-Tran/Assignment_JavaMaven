@@ -22,6 +22,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
@@ -44,7 +45,8 @@ public class RecipeController {
 
     @PostMapping("/createrecipe")
     public String createRecipe(
-            @ModelAttribute ("recipe") @Valid Recipes recipe, Model model,
+            @RequestParam("price") double price,
+            @ModelAttribute ("recipe") @Valid  Recipes recipe, Model model,
             BindingResult bindingResult,
             HttpSession session) {
 
@@ -55,11 +57,10 @@ public class RecipeController {
             uploadFileService.UploadFileHandling(files);
             recipe.setImage(files.getOriginalFilename());
         }
-
         if(bindingResult.hasErrors()) {
             return "createrecipe";
         }
-
+        recipe.setPrice(price);
         String email = (String) session.getAttribute("email");
         recipe.setCreater(userService.findOne(email).getName());
         recipeService.createRecipe(recipe, userService.findOne(email));

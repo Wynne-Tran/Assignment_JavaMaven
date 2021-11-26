@@ -59,7 +59,12 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/viewrecipe", "/createrecipe", "/planrecipe",
                         "/search", "/Calendar", "/deleteFavRecipe", "/editprofile",
-                        "/viewRecipes", "/viewFavorites", "viewCarts", "viewplans",  "/addplan",  "/editplan", "/editplan/*").hasAnyRole("USER, ADMIN") //hasRole("ADMIN")
+                        "/viewRecipes", "/viewFavorites", "viewplans",
+                        "/addplan",  "/editplan", "/editplan/*",
+                         "/viewingredient", "/viewingredient/*",
+                        "/editingredient", "/editingredient/*",
+                        "/addCart", "view_cart", "deleteCart",
+                        "/changepassword").hasAnyRole("USER, ADMIN") //hasRole("ADMIN")
                 .and().formLogin().loginPage("/login").permitAll()
                 .defaultSuccessUrl("/profile").and().logout().logoutSuccessUrl("/")
                 ;

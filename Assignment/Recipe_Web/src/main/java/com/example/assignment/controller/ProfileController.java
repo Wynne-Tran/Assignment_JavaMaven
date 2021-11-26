@@ -42,6 +42,8 @@ public class ProfileController {
     PlanService planService;
     @Autowired
     RecipeService recipeService;
+    @Autowired
+    ShoppingService shoppingService;
 
     @GetMapping("/profile")
     public  String showProfilePage(HttpSession session, Principal principal, Model model){
@@ -49,10 +51,12 @@ public class ProfileController {
         Users user = userService.findOne(email);
         user.setRecipeCount(recipeService.findAllUser(user).size());
         user.setLikeCount(favoriteService.findByEmail(email).size());
+        user.setShoppingCount(shoppingService.findByEmail(email).size());
         model.addAttribute("favorites", favoriteService.findByEmail(email));
         model.addAttribute("user", user);
         model.addAttribute("viewRecipes", true);
         session.setAttribute("username", user.getName());
+        session.setAttribute("cart", user.getShoppingCount());
         session.setAttribute("email", user.getEmail());
         return "profile";
     }
@@ -71,6 +75,7 @@ public class ProfileController {
         Users user = userService.findOne(email);
         user.setRecipeCount(recipeService.findAllUser(user).size());
         user.setLikeCount(favoriteService.findByEmail(email).size());
+        user.setShoppingCount(shoppingService.findByEmail(email).size());
         model.addAttribute("favorites", favoriteService.findByEmail(email));
         model.addAttribute("user", user);
 

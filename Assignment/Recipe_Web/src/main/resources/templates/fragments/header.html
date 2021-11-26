@@ -1,5 +1,4 @@
-
-<div th:fragment="navbar">
+<div th:fragment="navbar" xmlns:sec="http://www.w3.org/1999/xhtml">
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
     <div class="container">
       <a class="navbar-brand" href="/profile">
@@ -32,6 +31,13 @@
         </ul>
         <!-- Right -->
         <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item" style="margin-top: 5px; margin-right:  75px;">
+            <a class="nav-link" th:href="@{/view_cart}" >
+              <i class="fas fa-shopping-cart fa-lg text-danger me-3">
+                <span class="badge badge-danger" th:text="${session.cart} "></span>
+              </i>
+            </a>
+          </li>
           <li class="nav-item" style="align-content: center; font-size: x-large">
             <a class="nav-link" href="#" th:text=" |Hello, ${session.username} !| ">Hello </a>
           </li>

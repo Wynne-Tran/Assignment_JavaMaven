@@ -6,6 +6,11 @@
 <head >
     <div th:replace="fragments/head :: head"></div>
     <title>Create Recipe</title>
+    <style>
+        body{
+            background-color: #ffffff;
+        }
+    </style>
 </head>
 <body>
 <div th:replace="fragments/header :: navbar"></div>
@@ -33,6 +38,17 @@
                                     placeholder="Description">  </textarea> </div>
             <div class="text text-danger"
                  th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+            <div class="form-group">
+                        <textarea   class="form-control" th:field="*{ingredient}"
+                                    placeholder="ingredient">  </textarea> </div>
+            <div class="text text-danger"
+                 th:if="${#fields.hasErrors('ingredient')}" th:errors="*{ingredient}"></div>
+            <div class="form-group">
+                        <input   class="form-control" th:field="*{price}"
+                                    placeholder=" $ 0.0" />   </div>
+            <div class="text text-danger"
+                 th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+
             <div class="md-form">
                 <i class="fas fa-image prefix grey-text"></i>
                 <input type="file" name="image" th:field="*{multipartFile}" accept="image/png, image/jpeg, image/jpg">

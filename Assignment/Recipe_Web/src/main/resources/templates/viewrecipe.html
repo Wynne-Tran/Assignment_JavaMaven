@@ -17,7 +17,7 @@
             <!-- Grid column -->
             <div class="col-md-4 " th:each="recipe:${recipes}">
                 <div class="card" style="width: 300px">
-                    <img style="height: 200px" class="card-img-top" th:src="@{${'image/' + recipe.image }}" th:alt= "*{recipe.image}"  />
+                    <img style="height: 200px" class="card-img-top" th:src="@{${'/image/' + recipe.image }}" th:alt= "*{recipe.image}"  />
                     <div class="card-body">
                         <strong class="card-title" th:text="${recipe.title} "></strong>
                         <p class="card-text" th:text=" ${recipe.creater}"></p>
@@ -27,9 +27,9 @@
                                 <ul class="navbar-nav mr-auto" > <li th:text="${recipe.date}"></li> </ul>
                                 <ul class="navbar-nav ml-auto"  th:if="${recipe.getFavorite_like != '1' && recipe.getFavorite_like != '2'}">
                                     <li class="row">
-                                        <form action="/search" method="post">
+                                        <form >
                                             <input type="hidden" th:name="id" th:value="${recipe.id}">
-                                            <button style="color: #0c6eed; border: none; background-color: transparent "><i class="fas fa-eye fa-lg "> </i> </button>
+                                            <a th:href="@{/viewingredient/{id} (id = ${recipe.id})}"  style="color: #0c6eed; border: none; background-color: transparent "><i class="fas fa-eye fa-lg "> </i> </a>
                                         </form>
                                         <form action="/search" method="post">
                                             <input type="hidden" th:name="id" th:value="${recipe.id}">
@@ -39,9 +39,9 @@
                                 </ul>
                                 <ul class="navbar-nav ml-auto"  th:if="${recipe.getFavorite_like == '1'}">
                                     <li class="row">
-                                        <form action="/search" method="post">
+                                        <form>
                                             <input type="hidden" th:name="id" th:value="${recipe.id}">
-                                            <button style="color: #0c6eed; border: none; background-color: transparent "><i class="fas fa-eye fa-lg "> </i> </button>
+                                            <a th:href="@{/viewingredient/{id} (id = ${recipe.id})}"  style="color: #0c6eed; border: none; background-color: transparent "><i class="fas fa-eye fa-lg "> </i> </a>
                                         </form>
                                         <form action="/deleteRecipe" method="post">
                                             <input type="hidden" th:name="id" th:value="${recipe.id}">
@@ -51,9 +51,9 @@
                                 </ul>
                                 <ul class="navbar-nav ml-auto" th:if="${recipe.getFavorite_like == '2'}">
                                     <li class="row">
-                                        <form action="/search" method="post">
+                                        <form >
                                             <input type="hidden" th:name="id" th:value="${recipe.id}">
-                                            <button style="color: #0c6eed; border: none; background-color: transparent "><i class="fas fa-eye fa-lg "> </i> </button>
+                                            <a th:href="@{/viewingredient/{id} (id = ${recipe.id})}"  style="color: #0c6eed; border: none; background-color: transparent "><i class="fas fa-eye fa-lg "> </i> </a>
                                         </form>
                                         <form action="/deleteFavRecipe" method="post">
                                             <input type="hidden" th:name="id" th:value="${recipe.id}">

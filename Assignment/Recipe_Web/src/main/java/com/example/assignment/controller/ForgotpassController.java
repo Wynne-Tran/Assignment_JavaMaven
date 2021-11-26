@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpSession;
 import java.util.Objects;
 
 @Controller
@@ -21,8 +24,18 @@ public class ForgotpassController {
         return "forgotpassword";
     }
 
+    @GetMapping("/changepassword")
+    public String changePassword(Model model){
+        model.addAttribute("user", new Users());
+        return "changepassword";
+    }
+
     @PostMapping("/forgotpassword")
     public String forgotPassword( @ModelAttribute("user")  Users user, Model model)  {
+        if (Objects.equals(user.getEmail(), "")){
+            model.addAttribute("nullEmail", true);
+            return "forgotpassword";
+        }
         Users updateUser = userService.findOne(user.getEmail());
 
         if (!Objects.equals(user.getPassword(), user.getRepeatPassword())){
@@ -37,6 +50,32 @@ public class ForgotpassController {
         userService.updateUser(updateUser);
         model.addAttribute("newPassword", true);
         return "index";
+
+    }
+
+    @PostMapping("/changepassword")
+    public String changePassword(
+            @ModelAttribute("user")  Users user,
+            HttpSession session,  Model model,
+                                 @RequestParam(name="password", required = false) String password,
+                                 @RequestParam(name = "repeatPassword", required = false) String confirmpass
+    )  {
+        String email = (String) session.getAttribute("email");
+        Users updateUser = userService.findOne(email);
+
+        if (Objects.equals(password, "")){
+            model.addAttribute("nullPass", true);
+            return "changepassword";
+        }
+
+        if (!Objects.equals(password, confirmpass)){
+            model.addAttribute("error", true);
+            return "changepassword";
+        }
+        updateUser.setPassword(password);
+        userService.updateUser(updateUser);
+        model.addAttribute("newPassword", true);
+        return "changepassword";
 
     }
 

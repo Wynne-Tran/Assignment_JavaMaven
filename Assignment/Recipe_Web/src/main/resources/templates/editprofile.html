@@ -5,7 +5,12 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head >
     <div th:replace="fragments/head :: head"></div>
-    <title>Create Recipe</title>
+    <title>Edit Profile</title>
+    <style>
+        body{
+            background-color: #ffffff;
+        }
+    </style>
 </head>
 <body>
 <div th:replace="fragments/header :: navbar"></div>
@@ -43,7 +48,7 @@
                 </div>
             </div>
 
-            <div class="text-center row" >
+            <div class="row text-center" >
                 <button class="btn btn-outline-dark">Save</button>
                 <a class="btn btn-outline-dark" th:href="@{/profile}" >Cancel</a>
             </div>

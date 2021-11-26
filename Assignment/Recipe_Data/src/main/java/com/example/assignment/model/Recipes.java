@@ -17,16 +17,21 @@ import java.util.List;
 
 @Entity
 public class Recipes {
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    @NotEmpty(message = "Title must not be empty")
-    private String date;
     @NotEmpty(message = "Date must not be empty")
+    private String date;
+    @NotEmpty(message = "Title must not be empty")
     private String title;
     @NotEmpty(message = "Description must not be empty")
     @Column(length=10000)
     private String description;
+    @Column(length=10000)
+    @NotEmpty(message = "Ingredient must not be empty")
+    private String ingredient;
+    private double price = 0;
 
     @ManyToOne
     @JoinColumn(name="USER_EMAIL")
@@ -40,18 +45,34 @@ public class Recipes {
     @OneToMany(mappedBy = "recipes", cascade = CascadeType.ALL)
     private List<Favorite> favorite;
 
+    @OneToMany(mappedBy = "recipes", cascade = CascadeType.ALL)
+    private List<Shopping_Cart> cart;
+
     private String creater;
     private String favorite_like;
 
     public Recipes(){};
 
-    public Recipes(String date, String title, String description, String image,String creater, String favorite_like,  Users user) {
+    public Recipes(Long id, String creater, String date, String title, String description, String ingredient, double price, String image) {
+        this.id = id;
+        this.creater = creater;
+        this.date = date;
+        this.title = title;
+        this.description = description;
+        this.ingredient = ingredient;
+        this.price = price;
+        this.image = image;
+    }
+
+    public Recipes(String date, String title, String description, String image, String creater, String favorite_like, String ingredient, double price, Users user) {
         this.date = date;
         this.title = title;
         this.description = description;
         this.image = image;
         this.user = user;
         this.creater = creater;
+        this.ingredient = ingredient;
+        this.price = price;
         this.favorite_like= favorite_like;
     }
 
@@ -133,5 +154,21 @@ public class Recipes {
 
     public void setFavorite_like(String favorite_like) {
         this.favorite_like = favorite_like;
+    }
+
+    public String getIngredient() {
+        return ingredient;
+    }
+
+    public void setIngredient(String ingredient) {
+        this.ingredient = ingredient;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
