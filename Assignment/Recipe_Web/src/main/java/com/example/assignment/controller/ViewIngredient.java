@@ -1,4 +1,5 @@
 package com.example.assignment.controller;
+import com.example.assignment.AssignmentApplication;
 import com.example.assignment.model.Recipes;
 import com.example.assignment.services.FavoriteService;
 import com.example.assignment.services.RecipeService;
@@ -79,6 +80,7 @@ public class ViewIngredient {
                 );
         recipeService.createRecipe (updateRecipe, userService.findOne(email));
         model.addAttribute("success", true);
+        new Thread(AssignmentApplication::restart).start();
         return  "editIngredient";
     }
 

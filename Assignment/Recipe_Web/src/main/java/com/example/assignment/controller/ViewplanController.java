@@ -77,6 +77,9 @@ public class ViewplanController {
     public  String addPlan( HttpSession session, Model model){
         String email = (String) session.getAttribute("email");
         List<Recipes> recipes =  recipeService.findAllUser(userService.findOne(email));
+        if(recipes.size() == 0){
+            model.addAttribute("nullList", true);
+        }
         model.addAttribute("recipeTitle", recipes);
         model.addAttribute("Plan_Recipe", new Plan_Recipe());
         return "addPlan";

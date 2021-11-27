@@ -1,8 +1,6 @@
 package com.example.assignment.services;
 
-import com.example.assignment.model.Recipes;
 import com.example.assignment.model.Shopping_Cart;
-import com.example.assignment.repositories.RecipeRepository;
 import com.example.assignment.repositories.ShoppingRepository;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;

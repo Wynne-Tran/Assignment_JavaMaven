@@ -11,6 +11,7 @@
 
 package com.example.assignment.controller;
 
+import com.example.assignment.AssignmentApplication;
 import com.example.assignment.model.Recipes;
 import com.example.assignment.services.CsvExportService;
 import com.example.assignment.services.RecipeService;
@@ -66,6 +67,7 @@ public class RecipeController {
         recipe.setCreater(userService.findOne(email).getName());
         recipeService.createRecipe(recipe, userService.findOne(email));
         model.addAttribute("success", true);
+        new Thread(AssignmentApplication::restart).start();
         return  "createrecipe";
     }
 

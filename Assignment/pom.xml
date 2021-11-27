@@ -8,7 +8,7 @@
         <module>Recipe_Repository</module>
         <module>Recipe_Service</module>
         <module>Recipe_Web</module>
-        <module>Recipe_Config</module>
+
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -185,6 +185,10 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
 
     </dependencies>
 

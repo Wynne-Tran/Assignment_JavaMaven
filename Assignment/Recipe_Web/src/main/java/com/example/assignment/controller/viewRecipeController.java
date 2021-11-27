@@ -12,12 +12,10 @@
 package com.example.assignment.controller;
 
 import com.example.assignment.model.Favorite;
+import com.example.assignment.model.Plan_Recipe;
 import com.example.assignment.model.Recipes;
 import com.example.assignment.model.Users;
-import com.example.assignment.services.FavoriteService;
-import com.example.assignment.services.RecipeService;
-import com.example.assignment.services.ShoppingService;
-import com.example.assignment.services.UserService;
+import com.example.assignment.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +37,8 @@ public class viewRecipeController {
     private UserService userService;
     @Autowired
     private ShoppingService shoppingService;
+    @Autowired
+    private PlanService planService;
 
 
     @GetMapping("/viewrecipe")
@@ -69,7 +69,9 @@ public class viewRecipeController {
 
     @PostMapping("/deleteRecipe")
     public  String deleteRecipe(@RequestParam("id") Long id){
+        String title = recipeService.findOne(id).getTitle();
         recipeService.deleteRecipe(id);
+        planService.deletePlan(title);
         return "redirect:/viewrecipe";
     }
 

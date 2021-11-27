@@ -8,10 +8,8 @@
  * Description:  the repository with all logical read and write operations for Plan_Recipes entity
  ******************************************************************************** */
 
-package com.example.assignment.repositories;
-import com.example.assignment.model.Favorite;
+package com.example.assignment.repositories;;
 import com.example.assignment.model.Plan_Recipe;
-import com.example.assignment.model.Users;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

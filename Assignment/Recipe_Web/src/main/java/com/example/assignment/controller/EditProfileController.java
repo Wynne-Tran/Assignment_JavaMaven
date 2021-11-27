@@ -1,6 +1,8 @@
 package com.example.assignment.controller;
 
+import com.example.assignment.AssignmentApplication;
 import com.example.assignment.model.Users;
+import com.example.assignment.repositories.UserRepository;
 import com.example.assignment.services.FavoriteService;
 import com.example.assignment.services.ProfileService;
 import com.example.assignment.services.UploadFileService;
@@ -26,6 +28,8 @@ public class EditProfileController {
     ProfileService profileService;
     @Autowired
     UploadFileService uploadFileService;
+    @Autowired
+    UserRepository userRepository;
 
     @GetMapping("/editprofile")
     public  String editProfile(HttpSession session, Model model){
@@ -52,8 +56,9 @@ public class EditProfileController {
         user.setName(username);
         user.setJobTitle(jobTitle);
         user.setAbout(about);
-        userService.updateUser(user);
+        userRepository.save(user);
         model.addAttribute("done", true);
+        new Thread(AssignmentApplication::restart).start();
         return "editProfile";
     }
 }
