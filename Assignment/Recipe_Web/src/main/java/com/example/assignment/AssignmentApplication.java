@@ -24,10 +24,10 @@ public class AssignmentApplication {
     }
     public static void restart() {
         System.out.println("Restarting spring boot app for loading image!!! ");
+
         try{
             Thread.sleep(3000L);
-        }catch(Exception e) {}
-
+        }catch(Exception ignored) {}
         ApplicationArguments args = context.getBean(ApplicationArguments.class);
         Thread thread = new Thread(() -> {
             context.close();

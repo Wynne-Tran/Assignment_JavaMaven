@@ -11,8 +11,7 @@ import java.util.List;
 public class ShoppingService {
     @Autowired
     private ShoppingRepository shoppingRepository;
-    @Autowired
-    private RecipeRepository recipeRepository;
+
 
     public void addToCart(Shopping_Cart cart){
         shoppingRepository.save(cart);
@@ -32,4 +31,6 @@ public class ShoppingService {
         // TODO Auto-generated method stub
         return shoppingRepository.findByUserEmail(email);
     }
+
+    public  Shopping_Cart findByRecipes_id(Long id){ return  shoppingRepository.findByRecipes_id(id);}
 }

@@ -41,7 +41,7 @@
                                     <li class="row">
                                         <form>
                                             <input type="hidden" th:name="id" th:value="${recipe.id}">
-                                            <a th:href="@{/viewingredient/{id} (id = ${recipe.id})}"  style="color: #0c6eed; border: none; background-color: transparent "><i class="fas fa-eye fa-lg "> </i> </a>
+                                            <a th:href="@{/viewingredient/{id} (id = ${recipe.id})}"  style="color: #0c31ed; border: none; background-color: transparent "><i class="fas fa-eye fa-lg "> </i> </a>
                                         </form>
                                         <form action="/deleteRecipe" method="post">
                                             <input type="hidden" th:name="id" th:value="${recipe.id}">
@@ -53,7 +53,7 @@
                                     <li class="row">
                                         <form >
                                             <input type="hidden" th:name="id" th:value="${recipe.id}">
-                                            <a th:href="@{/viewingredient/{id} (id = ${recipe.id})}"  style="color: #0c6eed; border: none; background-color: transparent "><i class="fas fa-eye fa-lg "> </i> </a>
+                                            <a th:href="@{/viewingredient/{id} (id = ${recipe.id})}"  style="color:#0c31ed; border: none; background-color: transparent "><i class="fas fa-eye fa-lg "> </i> </a>
                                         </form>
                                         <form action="/deleteFavRecipe" method="post">
                                             <input type="hidden" th:name="id" th:value="${recipe.id}">

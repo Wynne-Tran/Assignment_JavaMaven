@@ -11,10 +11,7 @@
 
 package com.example.assignment.controller;
 
-import com.example.assignment.model.Favorite;
-import com.example.assignment.model.Plan_Recipe;
-import com.example.assignment.model.Recipes;
-import com.example.assignment.model.Users;
+import com.example.assignment.model.*;
 import com.example.assignment.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,7 +48,12 @@ public class viewRecipeController {
                 }
         }
         Users user = userService.findOne(email);
-        user.setShoppingCount(shoppingService.findByEmail(email).size());
+        int count = 0;
+        List<Shopping_Cart> newList = shoppingService.findByEmail(email);
+        for (Shopping_Cart shopping_cart : newList) {
+            count += shopping_cart.getQuantity();
+        }
+        user.setShoppingCount(count);
         session.setAttribute("cart",user.getShoppingCount());
         model.addAttribute("recipes", recipeService.findAll());
         return "viewrecipe";

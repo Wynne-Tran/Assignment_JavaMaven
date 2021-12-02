@@ -14,6 +14,12 @@ public class Shopping_Cart {
     @Column(name="recipe_id")
     private  Long recipe_id;
 
+    @Column(name="Quantity")
+    private  Integer quantity = 1;
+
+    @Column(name="Total")
+    private  double totalPrice ;
+
     @ManyToOne
     @JoinColumn(name = "recipe_id", referencedColumnName = "id", insertable = false, updatable = false )
     private Recipes recipes;
@@ -33,6 +39,30 @@ public class Shopping_Cart {
         this.user_email = user_email;
         this.recipe_id = recipe_id;
         this.recipes = recipes;
+    }
+
+    public Shopping_Cart(String user_email, Long recipe_id, Integer  quantity, double totalPrice, Recipes recipes) {
+        this.user_email = user_email;
+        this.recipe_id = recipe_id;
+        this.quantity = quantity;
+        this.recipes = recipes;
+        this.totalPrice =totalPrice;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice ;
     }
 
     public Integer getId() {

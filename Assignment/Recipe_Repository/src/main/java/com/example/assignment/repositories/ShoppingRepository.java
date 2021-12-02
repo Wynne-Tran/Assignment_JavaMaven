@@ -14,4 +14,6 @@ public interface ShoppingRepository  extends JpaRepository<Shopping_Cart, Intege
     @Query("SELECT c FROM Shopping_Cart c WHERE (c.recipe_id = :id and c.user_email = :email)")
     Shopping_Cart findShopping_CartByRecipe_idAndUser_email(Long id, String email);
 
+    Shopping_Cart findByRecipes_id(Long id);
+
 }

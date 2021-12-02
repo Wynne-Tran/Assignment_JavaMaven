@@ -15,6 +15,7 @@
 
 package com.example.assignment.controller;
 import com.example.assignment.model.Recipes;
+import com.example.assignment.model.Shopping_Cart;
 import com.example.assignment.model.Users;
 import com.example.assignment.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 
@@ -51,7 +54,12 @@ public class ProfileController {
         Users user = userService.findOne(email);
         user.setRecipeCount(recipeService.findAllUser(user).size());
         user.setLikeCount(favoriteService.findByEmail(email).size());
-        user.setShoppingCount(shoppingService.findByEmail(email).size());
+        int count = 0;
+       List<Shopping_Cart> newList = shoppingService.findByEmail(email);
+        for (Shopping_Cart shopping_cart : newList) {
+            count += shopping_cart.getQuantity();
+        }
+        user.setShoppingCount(count);
         model.addAttribute("favorites", favoriteService.findByEmail(email));
         model.addAttribute("user", user);
         model.addAttribute("viewRecipes", true);
@@ -73,9 +81,14 @@ public class ProfileController {
     public  String viewFavorites(HttpSession session, Model model){
         String email = (String) session.getAttribute("email");
         Users user = userService.findOne(email);
+        int count = 0;
+        List<Shopping_Cart> newList = shoppingService.findByEmail(email);
+        for (Shopping_Cart shopping_cart : newList) {
+            count += shopping_cart.getQuantity();
+        }
         user.setRecipeCount(recipeService.findAllUser(user).size());
         user.setLikeCount(favoriteService.findByEmail(email).size());
-        user.setShoppingCount(shoppingService.findByEmail(email).size());
+        user.setShoppingCount(count);
         model.addAttribute("favorites", favoriteService.findByEmail(email));
         model.addAttribute("user", user);
 
