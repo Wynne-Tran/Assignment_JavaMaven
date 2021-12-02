@@ -37,7 +37,8 @@ public class ExportController {
         List<Shopping_Cart> shopping_carts = (List<Shopping_Cart>) shoppingRepository.findAll();
         List<ReportSale> report= (List<ReportSale>) reportSaleRespository.findAll();
         String email = (String)session.getAttribute("email");
-        ByteArrayInputStream bis = PDFGenerator.cartPDFReport(shopping_carts, report, email);
+        String username = (String) session.getAttribute("username");
+        ByteArrayInputStream bis = PDFGenerator.cartPDFReport(shopping_carts, report, email, username);
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "inline; filename=employees.pdf");
