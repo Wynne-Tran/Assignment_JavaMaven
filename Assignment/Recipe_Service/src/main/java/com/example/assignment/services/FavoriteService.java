@@ -10,9 +10,7 @@
 package com.example.assignment.services;
 
 import com.example.assignment.model.Favorite;
-import com.example.assignment.model.Recipes;
 import com.example.assignment.repositories.FavoriteRepository;
-import com.example.assignment.repositories.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +20,7 @@ import java.util.List;
 public class FavoriteService {
     @Autowired
     private  FavoriteRepository favoriteRepository;
-    @Autowired
-    private RecipeRepository recipeRepository;
+
 
     public void addToFavorite(Favorite favorite){
             favoriteRepository.save(favorite);

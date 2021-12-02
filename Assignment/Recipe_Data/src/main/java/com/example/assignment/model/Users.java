@@ -50,6 +50,9 @@ public class Users implements Serializable {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Recipes> recipes;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<ReportSale> report;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ROLES", joinColumns = {
             @JoinColumn(name = "USER_EMAIL", referencedColumnName = "email")
@@ -130,6 +133,22 @@ public class Users implements Serializable {
     public void setPassword(String password) {
 
         this.password = password;
+    }
+
+    public List<ReportSale> getReport() {
+        return report;
+    }
+
+    public void setReport(List<ReportSale> report) {
+        this.report = report;
+    }
+
+    public List<Shopping_Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(List<Shopping_Cart> carts) {
+        this.carts = carts;
     }
 
     public String getRepeatPassword() {
