@@ -1,5 +1,14 @@
-package com.example.assignment.repositories;
 
+/* ********************************************************************************
+ * Project: Create a Recipe Project Using Spring/Spring Boot
+ * Assignment: 1 & 2
+ * Author(s): Wynne Tran
+ * Student Number: 101161665
+ * Date: Nov 4 2021
+ * Description:  this page is a repository database of Shopping Cart
+ ******************************************************************************** */
+
+package com.example.assignment.repositories;
 
 import com.example.assignment.model.Shopping_Cart;
 import org.springframework.data.jpa.repository.JpaRepository;

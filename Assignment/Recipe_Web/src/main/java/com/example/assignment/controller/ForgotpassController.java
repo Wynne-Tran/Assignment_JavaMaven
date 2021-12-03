@@ -1,3 +1,14 @@
+
+/* ********************************************************************************
+ * Project: Create a Recipe Project Using Spring/Spring Boot
+ * Assignment: 1 & 2
+ * Author(s): Wynne Tran
+ * Student Number: 101161665
+ * Date: Nov 4 2021
+ * Description:  this page use as controller for forgot password page
+ ******************************************************************************** */
+
+
 package com.example.assignment.controller;
 
 import com.example.assignment.model.Users;
@@ -32,7 +43,7 @@ public class ForgotpassController {
 
     @PostMapping("/forgotpassword")
     public String forgotPassword( @ModelAttribute("user")  Users user, Model model)  {
-        if (Objects.equals(user.getEmail(), "")){
+        if (Objects.equals(user.getEmail(), "") || user.getPassword() == null){
             model.addAttribute("nullEmail", true);
             return "forgotpassword";
         }

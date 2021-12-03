@@ -1,3 +1,14 @@
+
+/* ********************************************************************************
+ * Project: Create a Recipe Project Using Spring/Spring Boot
+ * Assignment: 1 & 2
+ * Author(s): Wynne Tran
+ * Student Number: 101161665
+ * Date: Nov 4 2021
+ * Description:  this page use to create PDF page, how my PDF look when export file
+ ******************************************************************************** */
+
+
 package com.example.assignment.services;
 
 import java.io.ByteArrayInputStream;
@@ -26,17 +37,12 @@ import javax.persistence.Table;
 import javax.servlet.http.HttpSession;
 import javax.swing.border.Border;
 
-
 public class PDFGenerator {
-
     private static final Logger logger = LoggerFactory.getLogger(PDFGenerator.class);
-
     public static ByteArrayInputStream cartPDFReport(List<Shopping_Cart> shopping_carts, List<ReportSale> report, String email, String username) {
         Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-
         try {
-
             PdfWriter.getInstance(document, out);
             document.open();
 
@@ -61,7 +67,7 @@ public class PDFGenerator {
             document.add(nameCompany);
             document.add(Chunk.NEWLINE);
 
-
+            // Add Text to PDF file ->
             Font font2 = FontFactory.getFont(FontFactory.COURIER, 18, BaseColor.BLACK);
             Paragraph customer = new Paragraph(username, font2);
             customer.setAlignment(Element.ALIGN_CENTER);
@@ -74,15 +80,11 @@ public class PDFGenerator {
             document.add(emailAddress);
             customer.add(Chunk.NEWLINE);
 
-
-            // Add Text to PDF file ->
             Font font = FontFactory.getFont(FontFactory.COURIER, 24, BaseColor.BLACK);
             Paragraph para = new Paragraph("Shopping Cart", font);
             para.setAlignment(Element.ALIGN_CENTER);
             document.add(para);
             document.add(Chunk.NEWLINE);
-
-
 
             PdfPTable table = new PdfPTable(5);
             // Add PDF Table Header ->
@@ -145,11 +147,10 @@ public class PDFGenerator {
                 }
             }
 
-            Paragraph sentence = new Paragraph("Payment: $"+  paymentCell, footer);
+            Paragraph sentence = new Paragraph("Total Payment: $"+  paymentCell, footer);
             sentence.setAlignment(Element.ALIGN_CENTER);
             document.add(sentence);
             document.add(Chunk.NEWLINE);
-
 
             document.close();
         } catch (DocumentException e) {

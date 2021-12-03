@@ -1,3 +1,14 @@
+
+/* ********************************************************************************
+ * Project: Create a Recipe Project Using Spring/Spring Boot
+ * Assignment: 1 & 2
+ * Author(s): Wynne Tran
+ * Student Number: 101161665
+ * Date: Nov 4 2021
+ * Description:  This page is service to save total payment and display in PDF file
+ ******************************************************************************** */
+
+
 package com.example.assignment.services;
 
 import com.example.assignment.model.ReportSale;

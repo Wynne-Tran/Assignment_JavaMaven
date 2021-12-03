@@ -7,7 +7,6 @@
         * Description: This page for configuration that allow user access html page, h2-console and PasswordEncoder....
 ******************************************************************************** */
 
-
 package com.example.assignment.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

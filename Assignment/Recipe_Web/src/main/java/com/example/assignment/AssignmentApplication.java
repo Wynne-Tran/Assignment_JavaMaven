@@ -1,3 +1,15 @@
+
+/* ********************************************************************************
+ * Project: Create a Recipe Project Using Spring/Spring Boot
+ * Assignment: 1 & 2
+ * Author(s): Wynne Tran
+ * Student Number: 101161665
+ * Date: Nov 4 2021
+ * Update: Dec 2 2021
+ * Description:  this page is main page, include restart function, will restart each time ipload image
+ ******************************************************************************** */
+
+
 package com.example.assignment;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.CommandLineRunner;
@@ -8,6 +20,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
@@ -20,11 +33,10 @@ public class AssignmentApplication {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(AssignmentApplication.class, args);
+        context = SpringApplication.run(AssignmentApplication.class, args);
     }
     public static void restart() {
         System.out.println("Restarting spring boot app for loading image!!! ");
-
         try{
             Thread.sleep(3000L);
         }catch(Exception ignored) {}

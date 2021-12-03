@@ -1,3 +1,15 @@
+
+/* ********************************************************************************
+ * Project: Create a Recipe Project Using Spring/Spring Boot
+ * Assignment: 1 & 2
+ * Author(s): Wynne Tran
+ * Student Number: 101161665
+ * Date: Nov 4 2021
+ * Description:  this page is a database of Report Sale
+ * Database to sale total payment when user checkout, and export to PDF file
+ ******************************************************************************** */
+
+
 package com.example.assignment.model;
 
 import javax.persistence.*;

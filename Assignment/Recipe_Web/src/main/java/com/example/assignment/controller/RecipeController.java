@@ -34,6 +34,8 @@ public class RecipeController {
     private UserService userService;
     @Autowired
     private UploadFileService uploadFileService;
+    @Autowired
+    AssignmentApplication assignmentApplication;
 
 
     @GetMapping("/createrecipe")
@@ -65,6 +67,7 @@ public class RecipeController {
         recipeService.createRecipe(recipe, userService.findOne(email));
         model.addAttribute("success", true);
         new Thread(AssignmentApplication::restart).start();
+
         return  "createrecipe";
     }
 

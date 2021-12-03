@@ -34,6 +34,7 @@ public class RegisterController {
     @Autowired
     UploadFileService uploadFileService;
 
+
     @GetMapping("/register")
     public String registerForm(Model model){
         model.addAttribute("user", new Users());
@@ -67,6 +68,7 @@ public class RegisterController {
         userService.createUser(user);
         model.addAttribute("showUsername", true);
         new Thread(AssignmentApplication::restart).start();
+
         return "index";
     }
 

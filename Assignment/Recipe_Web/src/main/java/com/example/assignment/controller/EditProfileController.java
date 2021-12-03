@@ -1,3 +1,14 @@
+
+/* ********************************************************************************
+ * Project: Create a Recipe Project Using Spring/Spring Boot
+ * Assignment: 1 & 2
+ * Author(s): Wynne Tran
+ * Student Number: 101161665
+ * Date: Nov 4 2021
+ * Description:  this page use as controller for edit profile
+ ******************************************************************************** */
+
+
 package com.example.assignment.controller;
 
 import com.example.assignment.AssignmentApplication;
@@ -31,6 +42,7 @@ public class EditProfileController {
     @Autowired
     UserRepository userRepository;
 
+
     @GetMapping("/editprofile")
     public  String editProfile(HttpSession session, Model model){
         String email = (String) session.getAttribute("email");
@@ -59,6 +71,7 @@ public class EditProfileController {
         userRepository.save(user);
         model.addAttribute("done", true);
         new Thread(AssignmentApplication::restart).start();
+
         return "editProfile";
     }
 }
