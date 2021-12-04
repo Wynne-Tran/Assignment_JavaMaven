@@ -49,7 +49,7 @@ public class ExportController {
         ByteArrayInputStream bis = PDFGenerator.cartPDFReport(shopping_carts, report, email, username);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "inline; filename=employees.pdf");
+        headers.add("Content-Disposition", "inline; filename=shopping_cart.pdf");
 
         return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
                 .body(new InputStreamResource(bis));
