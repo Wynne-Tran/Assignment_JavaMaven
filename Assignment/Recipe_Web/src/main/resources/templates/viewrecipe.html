@@ -23,6 +23,7 @@
                         <p class="card-text" th:text=" ${recipe.creater}"></p>
                         <p class="card-text" th:text=" ${recipe.description}"></p>
                         <div >
+                            
                             <nav class="navbar navbar-light bg-light">
                                 <ul class="navbar-nav mr-auto" > <li th:text="${recipe.date}"></li> </ul>
                                 <ul class="navbar-nav ml-auto"  th:if="${recipe.getFavorite_like != '1' && recipe.getFavorite_like != '2'}">
