@@ -28,7 +28,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages = {"com.example.assignment.*"})
 @EnableJpaRepositories(basePackages = {"com.example.assignment.*"})
 public class AssignmentApplication {
-
     private static ConfigurableApplicationContext context;
 
     public static void main(String[] args) {
