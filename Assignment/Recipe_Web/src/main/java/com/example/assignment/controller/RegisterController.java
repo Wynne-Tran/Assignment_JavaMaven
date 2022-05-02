@@ -10,6 +10,7 @@
 
 package com.example.assignment.controller;
 
+import com.example.assignment.AssignmentApplication;
 import com.example.assignment.model.Users;
 import com.example.assignment.services.UploadFileService;
 import com.example.assignment.services.UserService;
@@ -32,6 +33,7 @@ public class RegisterController {
     ServletContext context;
     @Autowired
     UploadFileService uploadFileService;
+
 
     @GetMapping("/register")
     public String registerForm(Model model){
@@ -65,6 +67,8 @@ public class RegisterController {
         }
         userService.createUser(user);
         model.addAttribute("showUsername", true);
+        new Thread(AssignmentApplication::restart).start();
+
         return "index";
     }
 

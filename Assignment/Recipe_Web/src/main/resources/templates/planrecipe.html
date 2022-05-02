@@ -47,7 +47,7 @@
   nav.onTimeRangeSelected = function(args) {
     dp.startDate = args.day;
     dp.update();
-    dp.events.load("/planrecipe/api/events");
+    dp.events.load("/viewplans/api/events");
   };
   nav.init();
   var dp = new DayPilot.Month("dp");
@@ -80,7 +80,7 @@
         resource: args.resource
       };
       DayPilot.Http.ajax({
-        url: '/planrecipe/api/events/create',
+        url: '/viewplans/api/events/create',
         data: params,
         success: function (ajax) {
           var data = ajax.data;
@@ -99,7 +99,7 @@
       resource: args.newResource
     };
     DayPilot.Http.ajax({
-      url: '/planrecipe/api/events/move',
+      url: '/viewplans/api/events/move',
       data: params,
       success: function (ajax) {
         dp.message("Moved");
@@ -114,7 +114,7 @@
       resource: args.e.resource()
     };
     DayPilot.Http.ajax({
-      url: '/planrecipe/api/events/move',
+      url: '/viewplans/api/events/move',
       data: params,
       success: function (ajax) {
         dp.message("Resized");
@@ -130,6 +130,16 @@
   dp.contextMenu = new DayPilot.Menu({
     items: [
       {
+        text: "Edit",
+        onClick: function(args) {
+          var e = args.source;
+          var params = {
+            id: e.id()
+          };
+          window.location='/editplan/' + params.id
+        }
+      },
+      {
         text: "Delete",
         onClick: function(args) {
           var e = args.source;
@@ -137,7 +147,7 @@
             id: e.id()
           };
           DayPilot.Http.ajax({
-            url: '/planrecipe/api/events/delete',
+            url: '/viewplans/api/events/delete',
             data: params,
             success: function (ajax) {
               dp.events.remove(e);
@@ -182,7 +192,7 @@
   });
   dp.init();
 
-  dp.events.load("/planrecipe/api/events");
+  dp.events.load("/viewplans/api/events");
 
 
   function updateColor(e, color) {
@@ -191,7 +201,7 @@
       color: color
     };
     DayPilot.Http.ajax({
-      url: '/planrecipe/api/events/setColor',
+      url: '/viewplans/api/events/setColor',
       data: params,
       success: function (ajax) {
         e.data.color = color;

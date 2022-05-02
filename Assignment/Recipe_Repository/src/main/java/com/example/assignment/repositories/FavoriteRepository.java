@@ -11,9 +11,14 @@ package com.example.assignment.repositories;
 
 import com.example.assignment.model.Favorite;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
 public interface FavoriteRepository extends JpaRepository <Favorite, Integer> {
     List<Favorite> findByUserEmail(String email);
+
+    @Query("SELECT c FROM Favorite c WHERE (c.recipe_id = :id and c.user_email = :email)")
+    Favorite findFavoriteByRecipe_idAndUser_email(Long id, String email);
+
 }

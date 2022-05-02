@@ -9,12 +9,11 @@
  ******************************************************************************** */
 
 package com.example.assignment.repositories;
-
-import com.example.assignment.model.Recipes;
-import org.springframework.data.repository.CrudRepository;
+import com.example.assignment.model.Users;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProfileRepository extends CrudRepository<Recipes, Long> {
+public interface ProfileRepository extends JpaRepository<Users, Long> {
 
 }

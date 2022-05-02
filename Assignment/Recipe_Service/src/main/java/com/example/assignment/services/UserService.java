@@ -1,11 +1,11 @@
 
 /* ********************************************************************************
  * Project: Create a Recipe Project Using Spring/Spring Boot
- * Assignment: 1
+ * Assignment: 1 & 2
  * Author(s): Wynne Tran
  * Student Number: 101161665
  * Date: Nov 4 2021
- * Description:  this page is UserService, connecting UserRepository to UserController
+ * Description:  this page user for user service, create, edit user account
  ******************************************************************************** */
 package com.example.assignment.services;
 
@@ -30,6 +30,12 @@ public class UserService {
         List<Roles> roles = new ArrayList<>();
         roles.add(userRole);
         user.setRoles(roles);
+        userRepository.save(user);
+    }
+
+    public void updateUser(Users user) {
+        BCryptPasswordEncoder encoder = new  BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 

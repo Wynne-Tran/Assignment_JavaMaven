@@ -30,6 +30,7 @@ public class RecipeService {
     }
 
 
+
     public List<Recipes> findByTitle(String title) {
         // TODO Auto-generated method stub
         return  recipeRepository.findByTitleLike("%"+title+"%");
@@ -46,6 +47,7 @@ public class RecipeService {
     }
 
     public void deleteRecipe(Long id) {
+
         recipeRepository .deleteById(id);
     }
 

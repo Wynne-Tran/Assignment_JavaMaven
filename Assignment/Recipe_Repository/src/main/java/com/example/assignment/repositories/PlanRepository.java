@@ -8,7 +8,7 @@
  * Description:  the repository with all logical read and write operations for Plan_Recipes entity
  ******************************************************************************** */
 
-package com.example.assignment.repositories;
+package com.example.assignment.repositories;;
 import com.example.assignment.model.Plan_Recipe;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -22,12 +22,16 @@ import java.util.List;
 public interface PlanRepository extends CrudRepository<Plan_Recipe, Long> {
 
     @Query("from Plan_Recipe e where e.user.email = :email and not(e.end < :from or e.start > :to)")
-    public List<Plan_Recipe> findBetween(
+     List<Plan_Recipe> findBetween(
             @Param("email") String email,
             @Param("from") @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
             @Param("to") @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME) LocalDateTime end);
 
     @Transactional
     void deleteByText(String title);
+
+    List<Plan_Recipe> findByUserEmail(String email);
+
+
 
 }

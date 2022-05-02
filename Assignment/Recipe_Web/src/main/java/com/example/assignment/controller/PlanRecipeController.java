@@ -1,4 +1,3 @@
-
 /* ********************************************************************************
  * Project: Create a Recipe Project Using Spring/Spring Boot
  * Assignment: 1
@@ -37,7 +36,7 @@ public class PlanRecipeController {
     UserService userService;
 
 
-    @RequestMapping(value="/planrecipe", method= RequestMethod.GET)
+    @RequestMapping(value="/viewplans", method= RequestMethod.GET)
     @ResponseBody
     public ModelAndView calendar(HttpSession session) {
         ModelAndView mv = new ModelAndView("planrecipe");
@@ -51,16 +50,16 @@ public class PlanRecipeController {
         return mv;
     }
 
-    @GetMapping("/planrecipe/api/events")
+    @GetMapping("/viewplans/api/events")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     Iterable<Plan_Recipe> events(HttpSession session,
-            @RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
-            @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
+                                 @RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+                                 @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
         String userEmail = (String)session.getAttribute("email");
         return er.findBetween(userEmail, start, end);
     }
 
-    @PostMapping("/planrecipe/api/events/create")
+    @PostMapping("/viewplans/api/events/create")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @Transactional
     Plan_Recipe createEvent(@RequestBody EventCreateParams params, HttpSession session) {
@@ -69,13 +68,13 @@ public class PlanRecipeController {
         e.setStart(params.start);
         e.setEnd(params.end);
         e.setText(params.text);
-       e.setUser(userService.findOne(email));
+        e.setUser(userService.findOne(email));
         er.save(e);
 
         return e;
     }
 
-    @PostMapping("/planrecipe/api/events/move")
+    @PostMapping("/viewplans/api/events/move")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @Transactional
     Plan_Recipe moveEvent(@RequestBody EventMoveParams params) {
@@ -84,11 +83,10 @@ public class PlanRecipeController {
         e.setStart(params.start);
         e.setEnd(params.end);
         er.save(e);
-
         return e;
     }
 
-    @PostMapping("/planrecipe/api/events/setColor")
+    @PostMapping("/viewplans/api/events/setColor")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @Transactional
     Plan_Recipe setColor(@RequestBody SetColorParams params) {
@@ -100,7 +98,7 @@ public class PlanRecipeController {
         return e;
     }
 
-    @PostMapping("/planrecipe/api/events/delete")
+    @PostMapping("/viewplans/api/events/delete")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @Transactional
     EventDeleteResponse deleteEvent(@RequestBody EventDeleteParams params) {

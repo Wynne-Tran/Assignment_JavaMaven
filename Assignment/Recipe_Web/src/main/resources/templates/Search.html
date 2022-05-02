@@ -6,6 +6,11 @@
 <head >
     <div th:replace="fragments/head :: head"></div>
     <title>Search</title>
+    <style>
+        body{
+            background-color: #ffffff;
+        }
+    </style>
 </head>
 <body>
 <div th:replace="fragments/header :: navbar"></div>
@@ -36,7 +41,7 @@
                 <div class="row">
                     <!--Grid column-->
                     <div class="col-md-6 mb-4">
-                        <img class="img-fluid z-depth-1-half" th:src="@{${'image/' + recipe.image }}" th:alt= "*{recipe.image}"  />
+                        <img class="img-fluid z-depth-1-half" th:src="@{${'/image/' + recipe.image }}" th:alt= "*{recipe.image}"  />
                     </div>
                     <!--Grid column-->
                     <!--Grid column-->
@@ -54,16 +59,34 @@
                         <hr>
                         <strong th:text="'Date created: ' + ${recipe.date}"></strong>
                         <!-- CTA -->
-                        <div th:if="${recipe.getFavorite_like != '1'  &&  recipe.getFavorite_like != '2'}">
+                        <div class = "row" th:if="${recipe.getFavorite_like != '1'  &&  recipe.getFavorite_like != '2'}">
+                            <form >
+                                <input type="hidden" th:name="id" th:value="${recipe.id}">
+                                <a th:href="@{/viewingredient/{id} (id = ${recipe.id})}"  class="btn btn-outline-info" > <i class="fas fa-eye fa-lg "> </i> </a>
+                            </form>
                             <form action="/search" method="post">
                                 <input type="hidden" th:name="id" th:value="${recipe.id}">
                                 <button class="btn btn-outline-danger"  > <i class="fas fa-heart fa-lg "> </i> </button>
                             </form>
                         </div>
-                        <div th:if="${recipe.getFavorite_like == '1' }">
+                        <div class = "row"  th:if="${recipe.getFavorite_like == '1' }">
+                            <form >
+                                <input type="hidden" th:name="id" th:value="${recipe.id}">
+                                <a th:href="@{/viewingredient/{id} (id = ${recipe.id})}"  class="btn btn-outline-info" > <i class="fas fa-eye fa-lg "> </i> </a>
+                            </form>
                             <form action="/deleteRecipe" method="post">
                                 <input type="hidden" th:name="id" th:value="${recipe.id}">
                                 <button class="btn btn-outline-danger" > <i class="fas fa-trash fa-lg "> </i> </button>
+                            </form>
+                        </div>
+                        <div class = "row"  th:if="${recipe.getFavorite_like == '2' }">
+                            <form >
+                                <input type="hidden" th:name="id" th:value="${recipe.id}">
+                                <a th:href="@{/viewingredient/{id} (id = ${recipe.id})}"  class="btn btn-outline-info" > <i class="fas fa-eye fa-lg "> </i> </a>
+                            </form>
+                            <form action="/deleteFavRecipe" method="post">
+                                <input type="hidden" th:name="id" th:value="${recipe.id}">
+                                <button class="btn btn-outline-danger" > <i class="fas fa-heart-broken fa-lg "> </i> </button>
                             </form>
                         </div>
                     </div>

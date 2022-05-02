@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <div th:replace="fragments/head :: head"></div>
+    <title>Profile</title>
+    <link href="/static/css/profile.css" rel="stylesheet" th:href="@{css/profile.css}"/>
+</head>
+<body><div th:replace="fragments/header :: navbar"></div>
+<div class="container1">
+
+    <main>
+        <div class="row ">
+            <div class="left col-lg-4">
+                <div class="photo-left">
+                    <img class="photo" th:src="@{${'/image/' + user.image }}" th:alt= "*{user.image}" />
+                </div>
+                <h3 class="name" th:text="${user.name}"> </h3>
+                <p class="info" th:text="${user.jobTitle}"></p>
+                <a th:href="@{/changepassword}" style="font-weight: bold" >Change Password </a>
+                <a th:href="@{/planrecipe}" style="font-weight: bold">View Your Plans</a>
+                <a th:href="@{/editprofile}" style="font-weight: bold">Edit Profile</a>
+                <div class="stats row">
+                    <div class="stat col-xs-4" style="padding-right: 50px;">
+                        <p class="number-stat" th:text="${user.recipeCount}"></p>
+                        <a  th:href="@{/profile}" >Recipes</a>
+                    </div>
+                    <div class="stat col-xs-4">
+                        <p class="number-stat" th:text="${user.likeCount}"></p>
+                        <a th:href="@{/viewFavorites}" > Likes</a>
+                    </div>
+                    <div class="stat col-xs-4" style="padding-left: 50px;">
+                        <p class="number-stat" th:text="${session.cart}"></p>
+                        <a  th:href="@{/view_cart}" >Carts</a>
+                    </div>
+                </div>
+                <p class="desc">Hi ! My name is <span style="color: #4a148c" th:text="${user.name}"></span>. <span th:text="${user.about}"></span></p>
+            </div>
+            <!--------------- Form user-------------------->
+            <div class="right col-lg-8" >
+                <div class="wrap">
+                    <div class="left">
+                        <div id="nav"></div>
+                    </div>
+                    <div class="right">
+                        <div class="toolbar">
+                            <div class="toolbar-item">
+                                Export as: &nbsp; <select id="format">
+                                <option >PDF</option>
+                            </select>
+                                &nbsp;
+                                <a th:href="@{/api/pdf/export}" target="_blank"  style=" border: none; background-color: transparent"><i class="fas fa-download fa-lg text-success me-3"> </i> </a>
+                            </div>
+                        </div>
+                        <div id="dp"></div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row row-cols-md-1">
+
+                    <div>
+                        <div class="right col-lg-8" >
+                            <div class="row row-cols-md-1">
+                                <section class="vh-75 gradient-custom-2" style="min-width: 50em">
+                                    <div class="container py-5 h-100">
+                                        <div class="row d-flex justify-content-center align-items-center h-100">
+                                            <div class="col-md-12 col-xl-10">
+                                                <div class="card mask-custom">
+                                                    <div class="card-body p-4 text-white">
+                                                        <div class="text-center pt-1 pb-2">
+                                                            <h2 style="color: #0c6eed" class="my-4">Shopping Cart</h2></div>
+                                                        <table class="table text-white mb-0">
+                                                            <thead style="color: #5705f4"  >
+                                                            <tr>
+                                                                <th scope="col">Image</th>
+                                                                <th scope="col">Ingredient</th>
+                                                                <th scope="col">Price</th>
+                                                                <th scope="col">Quantity</th>
+                                                                <th scope="col">Total</th>
+                                                                <th scope="col">Remove</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody  >
+
+                                                            <tr class="fw-normal" style="color: #0d0d0d" th:each="fav:${carts}" >
+                                                                <th>
+                                                                    <img style="width: 80px" class="card-img-top" th:src="@{${'/image/' + fav.recipes.image }}" th:alt= "*{fav.recipes.image}"  />
+                                                                </th>
+                                                                <td class="align-middle">
+                                                                    <strong class="card-title" style="margin-bottom: 25px" th:text= "${fav.getRecipes().ingredient}"></strong>
+                                                                </td>
+                                                                <td class="align-middle">
+                                                                    <strong class="card-title" style="margin-bottom: 25px"   th:text= "|${fav.getRecipes().price}           x|"></strong>
+                                                                </td>
+                                                                <td class="align-middle">
+                                                                    <div class="row">
+                                                                        <form action="/minusQuantityCart" method="post">
+                                                                            <input type="hidden" name = "id" th:value="${fav.id}">
+                                                                            <button  class="card-title" style="border: none; background-color: transparent"><i class="fas fa-minus fa-lg text-success"> </i> </button>
+                                                                        </form>
+
+                                                                        <span class="card-title" th:text= "${fav.quantity}"></span>
+
+                                                                        <form action="/addQuantityCart" method="post">
+                                                                            <input type="hidden" name = "id" th:value="${fav.id}">
+                                                                            <button  class="card-title" style="border: none;background-color: transparent"><i class="fas fa-plus  fa-lg text-success"> </i> </button>
+                                                                        </form>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="align-middle">
+                                                                    <strong class="card-title" style="margin-bottom: 25px" th:text= "${fav.totalPrice}"></strong>
+                                                                </td>
+                                                                <td class="align-middle row">
+                                                                    &nbsp
+                                                                    &nbsp
+                                                                    <form action="/deleteCart" method="post">
+                                                                        <input type="hidden" name = "id" th:value="${fav.id}">
+                                                                        <button  class="card-title" style="border: none; background-color: transparent; margin-top: 20px"><i class="fas fa-trash-alt fa-lg text-danger"> </i> </button>
+                                                                    </form>
+
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+
+                                                        <hr>
+                                                        <div>
+                                                            <strong  style="color: #0c6eed; font-weight: bold; font-size: xx-large; margin-left: 10px">Payment: </strong>
+                                                            &nbs
+                                                            &nbsp
+                                                            &nbsp
+                                                            &nbsp
+                                                            <strong style="color: #0c6eed;font-weight: bold; font-size: xx-large" th:text= "|$ ${totalPay} |"></strong>
+                                                            <div style="float: right">
+                                                                <button class="btn btn-outline-info"  >Check Out</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <br/>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+</body>
+<div th:replace="fragments/footer :: footer"></div>
+</html>

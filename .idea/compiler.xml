@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Recipe_Data" />
         <module name="Recipe_Web" />
+        <module name="Recipe_Data" />
         <module name="Recipe_Repository" />
-        <module name="Recipe_Service" />
         <module name="Recipe_Configuration" />
+        <module name="Recipe_Service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,6 +22,7 @@
       <module name="Recipe_Repository" target="16" />
       <module name="Recipe_Service" target="16" />
       <module name="Recipe_Web" target="16" />
+      <module name="wrapper" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

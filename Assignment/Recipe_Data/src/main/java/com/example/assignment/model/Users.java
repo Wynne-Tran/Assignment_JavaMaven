@@ -40,8 +40,18 @@ public class Users implements Serializable {
     @Nullable
     private MultipartFile multipartFile;
 
+  //Profile
+  private String jobTitle = "Student";
+  private String about = "I'm a UI/UX Designer from Paris, in France. I really enjoy photography and mountains.";
+  private  Integer recipeCount = 0;
+  private  Integer likeCount = 0;
+  private  Integer shoppingCount = 0;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Recipes> recipes;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<ReportSale> report;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ROLES", joinColumns = {
@@ -55,10 +65,21 @@ public class Users implements Serializable {
     private List<Favorite> favorites;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Shopping_Cart> carts;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Plan_Recipe> plan_recipes;
 
+
+
     public Users(){};
+
+    public Users(String email, String password, String repeatPassword) {
+        this.email = email;
+        this.password = password;
+        this.repeatPassword = repeatPassword;
+    }
 
     public Users(String email, String name, String password, String repeatPassword, String image) {
         this.email = email;
@@ -73,6 +94,20 @@ public class Users implements Serializable {
         this.name = name;
         this.password = password;
         this.image = image;
+    }
+
+    public Users(String email, String name, String password, @Nullable String repeatPassword, String image, @Nullable MultipartFile multipartFile, String jobTitle, String about, Integer recipeCount, Integer likeCount, Integer shoppingCount) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.repeatPassword = repeatPassword;
+        this.image = image;
+        this.multipartFile = multipartFile;
+        this.jobTitle = jobTitle;
+        this.about = about;
+        this.recipeCount = recipeCount;
+        this.likeCount = likeCount;
+        this.shoppingCount = shoppingCount;
     }
 
     public String getEmail() {
@@ -98,6 +133,22 @@ public class Users implements Serializable {
     public void setPassword(String password) {
 
         this.password = password;
+    }
+
+    public List<ReportSale> getReport() {
+        return report;
+    }
+
+    public void setReport(List<ReportSale> report) {
+        this.report = report;
+    }
+
+    public List<Shopping_Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(List<Shopping_Cart> carts) {
+        this.carts = carts;
     }
 
     public String getRepeatPassword() {
@@ -154,5 +205,45 @@ public class Users implements Serializable {
 
     public void setPlan_recipes(List<Plan_Recipe> plan_recipes) {
         this.plan_recipes = plan_recipes;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public Integer getRecipeCount() {
+        return recipeCount;
+    }
+
+    public void setRecipeCount(Integer recipeCount) {
+        this.recipeCount = recipeCount;
+    }
+
+    public Integer getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(Integer likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public Integer getShoppingCount() {
+        return shoppingCount;
+    }
+
+    public void setShoppingCount(Integer shoppingCount) {
+        this.shoppingCount = shoppingCount;
     }
 }
